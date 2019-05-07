@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1557093664 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\main.cpp
+	<iostream>
+	"ManejoVentana.h"
+	"VariablesFijas.h"
+
+1557095721 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\manejoventana.cpp
+	"ManejoVentana.h"
+	<iostream>
+
+1557095549 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\manejoventana.h
+	<SDL.h>
+
+1557093357 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\variablesfijas.h
+	<SDL.h>
+
