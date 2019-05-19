@@ -14,3 +14,18 @@
 1557093357 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\variablesfijas.h
 	<SDL.h>
 
+1558274863 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
+	<iostream>
+	"ManejoVentana.h"
+	"VariablesFijas.h"
+
+1557095549 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.h
+	<SDL.h>
+
+1558274904 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\variablesfijas.h
+	<SDL.h>
+
+1557095721 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
+	"ManejoVentana.h"
+	<iostream>
+
