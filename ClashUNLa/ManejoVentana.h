@@ -1,6 +1,7 @@
 #ifndef ManejoVentana_h
 #define ManejoVentana_h
 #include <SDL.h>
+#include <SDL_image.h>
 /*Definicion del tipo de dato para manejo de ventana*/
 /*
 Atributos:
@@ -61,7 +62,14 @@ PRE: ventana creada con crear
 POST: render seteado
 ventana:instancia sobre la cual se invoca la primitiva
 */
-void render(Ventana &ventana);
+void renderClear(Ventana &ventana);
+/*----------------------------------*/
+/*
+PRE: ventana creada con crear
+POST: render seteado
+ventana:instancia sobre la cual se invoca la primitiva
+*/
+void renderPresent(Ventana &ventana);
 /*----------------------------------*/
 /*
 PRE: ventana creada con crear
@@ -75,4 +83,5 @@ POST: ventana destruida
 ventana:instancia sobre la cual se invoca la primitiva
 */
 void destruirVentana(Ventana &ventana);
+/*----------------------------------*/
 #endif // ManejoVentana_h

@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Estacion.cpp" />
+		<Unit filename="Estacion.h" />
 		<Unit filename="ManejoVentana.cpp" />
 		<Unit filename="ManejoVentana.h" />
 		<Unit filename="VariablesFijas.h" />

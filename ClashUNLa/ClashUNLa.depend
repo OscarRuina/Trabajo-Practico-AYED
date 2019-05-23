@@ -14,18 +14,27 @@
 1557093357 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\variablesfijas.h
 	<SDL.h>
 
-1558274863 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
+1558629836 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
 	<iostream>
 	"ManejoVentana.h"
+	"Estacion.h"
 	"VariablesFijas.h"
 
-1557095549 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.h
+1558620333 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.h
+	<SDL.h>
+	<SDL_image.h>
+
+1558576103 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\variablesfijas.h
 	<SDL.h>
 
-1558274904 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\variablesfijas.h
-	<SDL.h>
-
-1557095721 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
+1558620344 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
 	"ManejoVentana.h"
 	<iostream>
+
+1558620952 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.h
+	<SDL.h>
+	<SDL_image.h>
+
+1558629877 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.cpp
+	"Estacion.h"
 

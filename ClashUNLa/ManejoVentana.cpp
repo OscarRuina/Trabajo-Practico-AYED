@@ -57,8 +57,11 @@ void manejarEventos(Ventana &ventana){
     }
 }
 
-void render(Ventana &ventana){
+void renderClear(Ventana &ventana){
     SDL_RenderClear(ventana.p_render);
+}
+
+void renderPresent(Ventana &ventana){
     SDL_RenderPresent(ventana.p_render);
 }
 
