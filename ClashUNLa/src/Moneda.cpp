@@ -22,7 +22,7 @@ void dibujarMoneda(Moneda &moneda,SDL_Renderer* renderer){
 
 }
 
-void updateMoneda(Moneda &moneda,boolean turno){
+void updateMoneda(Moneda &moneda){
     int turno = 0;
     while(turno<moneda.vidaUtil){
 

@@ -4,6 +4,7 @@
 #include "Estacion.h"
 #include "VariablesFijas.h"
 #include "Moneda.h"
+#include "Mapa.h"
 
 using namespace std;
 
@@ -19,12 +20,13 @@ int main(int argc,char *args[])
     Moneda moneda;
     Ventana ventana;
     Estacion estacion;
+    Mapa mapa;
 
     crearVentana(ventana);//creo ventana
     InicializarVentana(ventana,"ClashUNLa",pos,pos,ancho,alto,SDL_WINDOW_RESIZABLE);//la inicializo
     crearEstacion(estacion,fila/3,columna/3,anchoCasillero,altoCasillero,ventana.p_render);//creo estacion
     crearMoneda(moneda,ventana.p_render);
-
+    crearMapa(mapa,ventana.p_render);
     while(getRun(ventana)){
 
 
@@ -34,6 +36,7 @@ int main(int argc,char *args[])
 
         manejarEventos(ventana);
         renderClear(ventana);
+        dibujarMapa(mapa,ventana.p_render);
         //aca iria los dibujar de cada objeto del juego
         dibujarEstacion(estacion,ventana.p_render);
         dibujarMoneda(moneda,ventana.p_render);

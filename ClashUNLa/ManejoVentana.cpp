@@ -1,5 +1,7 @@
 #include "ManejoVentana.h"
 #include <iostream>
+#include <SDL.h>
+
 /*implementacion de primitivas*/
 using namespace std;
 void crearVentana(Ventana &ventana){
