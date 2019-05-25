@@ -14,11 +14,14 @@
 1557093357 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\variablesfijas.h
 	<SDL.h>
 
-1558629836 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
+1558751877 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
 	<iostream>
+	<SDL.h>
 	"ManejoVentana.h"
 	"Estacion.h"
 	"VariablesFijas.h"
+	"Moneda.h"
+	"Mapa.h"
 
 1558620333 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.h
 	<SDL.h>
@@ -27,9 +30,10 @@
 1558576103 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\variablesfijas.h
 	<SDL.h>
 
-1558620344 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
+1558751584 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
 	"ManejoVentana.h"
 	<iostream>
+	<SDL.h>
 
 1558620952 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.h
 	<SDL.h>
@@ -37,4 +41,20 @@
 
 1558629877 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.cpp
 	"Estacion.h"
+
+1558801199 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdlib.h>
+
+1558801365 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.h
+	<SDL.h>
+
+1558800605 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.cpp
+	"Mapa.h"
+	<SDL.h>
+	<SDL_image.h>
+
+1558801119 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.cpp
+	"Moneda.h"
 

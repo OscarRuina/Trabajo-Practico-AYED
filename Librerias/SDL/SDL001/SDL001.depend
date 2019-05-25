@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1399256650 source:d:\sdl\alix_sdl\sdl001\cleanup.cpp
+	"game.h"
+
+1399258250 d:\sdl\alix_sdl\sdl001\game.h
+	"includes.h"
+
+1395852248 d:\sdl\alix_sdl\sdl001\includes.h
+	<SDL.h>
+	<SDL_image.h>
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+
+1399258288 source:d:\sdl\alix_sdl\sdl001\game.cpp
+	"game.h"
+
+1374543445 source:d:\sdl\alix_sdl\sdl001\loadcontent.cpp
+	"game.h"
+
+1374542182 source:d:\sdl\alix_sdl\sdl001\onevent.cpp
+	"game.h"
+
+1399257971 source:d:\sdl\alix_sdl\sdl001\oninit.cpp
+	"game.h"
+
+1374543968 source:d:\sdl\alix_sdl\sdl001\onloop.cpp
+	"game.h"
+
