@@ -1,11 +1,14 @@
 #include <iostream>
+#include <string.h>//permite utilizar strcat(char,char) strcpy(char,char);
+#include <conio.h>// agrega la funcuion getch(); que es trabante de procesos
+#include <stdlib.h>
 #include <SDL.h>
 #include "ManejoVentana.h"
 #include "Estacion.h"
-#include "VariablesFijas.h"
 #include "Moneda.h"
 #include "Mapa.h"
-
+#include "Tren.h"
+#include "VariablesFijas.h"
 using namespace std;
 
 int main(int argc,char *args[])
@@ -21,12 +24,16 @@ int main(int argc,char *args[])
     Ventana ventana;
     Estacion estacion;
     Mapa mapa;
+    Tren tren;
 
     crearVentana(ventana);//creo ventana
     InicializarVentana(ventana,"ClashUNLa",pos,pos,ancho,alto,SDL_WINDOW_RESIZABLE);//la inicializo
     crearEstacion(estacion,fila/3,columna/3,anchoCasillero,altoCasillero,ventana.p_render);//creo estacion
     crearMoneda(moneda,ventana.p_render);
     crearMapa(mapa,ventana.p_render);
+    crearTren(tren,"c1", 0, 0,"der",anchoCasillero, altoCasillero, altoSprite);
+
+
     while(getRun(ventana)){
 
 
@@ -40,6 +47,7 @@ int main(int argc,char *args[])
         //aca iria los dibujar de cada objeto del juego
         dibujarEstacion(estacion,ventana.p_render);
         dibujarMoneda(moneda,ventana.p_render);
+        dibujarTren(tren,ventana.p_render,0);
         renderPresent(ventana);
         actualizar(ventana);
 
@@ -51,6 +59,7 @@ int main(int argc,char *args[])
         }
     }
     destruirEstacion(estacion);
+    destruirTren(tren);
     destruirVentana(ventana);
     return 0;
 }

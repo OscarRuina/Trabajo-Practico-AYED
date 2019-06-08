@@ -2,7 +2,7 @@
 #define Estacion_h
 #include <SDL.h>
 #include <SDL_image.h>
-/*Definicion del tipo de dato para manejo de ventana*/
+/*Definicion del tipo de dato para manejo de estacion*/
 /*
 Atributos:
 
@@ -13,7 +13,7 @@ Atributos:
  *imagen ---> puntero a imagen
  rectImagen ---> variable para dibujar la imagen
 */
-/*Tipo de estructura de la ventana*/
+/*Tipo de estructura de la estacion*/
 typedef struct{
   int f;
   int c;

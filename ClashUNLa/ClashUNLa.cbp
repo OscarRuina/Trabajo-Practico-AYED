@@ -40,6 +40,8 @@
 		<Unit filename="Mapa.h" />
 		<Unit filename="Moneda.cpp" />
 		<Unit filename="Moneda.h" />
+		<Unit filename="Tren.cpp" />
+		<Unit filename="Tren.h" />
 		<Unit filename="VariablesFijas.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
