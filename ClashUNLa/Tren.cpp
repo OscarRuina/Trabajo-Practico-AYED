@@ -60,4 +60,31 @@ char* getDireccion(Tren &tren){
 void setDireccion(Tren &tren,char direccion[]){
     strcpy(tren.direccion,direccion);
 }
+void evaluarEventosDelTeclado(Tren &tren){
+    SDL_Event evento;
+    const unsigned char *keys;
+    keys = SDL_GetKeyboardState(NULL);
+    if(SDL_PollEvent(&evento)){
+        switch(evento.type){
+            case SDL_KEYDOWN:
+                if(keys[SDL_SCANCODE_LEFT]){
+                    setDireccion(tren,"izq");
+                    setColumna(tren,-1);
+                }
+                if(keys[SDL_SCANCODE_RIGHT]){
+                    setDireccion(tren,"der");
+                    setColumna(tren,+1);
+                }
+                if(keys[SDL_SCANCODE_UP]){
+                    setDireccion(tren,"arr");
+                    setFila(tren,+1);
+                }
+                if(keys[SDL_SCANCODE_DOWN]){
+                    setDireccion(tren,"aba");
+                    setFila(tren,-1);
+                }
 
+            break;
+        }
+    }
+}

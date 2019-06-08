@@ -19,15 +19,18 @@ int main(int argc,char *args[])
     //variables para bloquear el maximo de FPS.
     int frameStart;
     int frameTime;
-
-    Moneda moneda;
     Ventana ventana;
+    Moneda moneda;
+    Tren tren;
     Estacion estacion;
     Mapa mapa;
-    Tren tren;
+
 
     crearVentana(ventana);//creo ventana
     InicializarVentana(ventana,"ClashUNLa",pos,pos,ancho,alto,SDL_WINDOW_RESIZABLE);//la inicializo
+    /*SDL_Event event;
+    const unsigned char *keys;
+    keys = SDL_GetKeyboardState(NULL);*/
     crearEstacion(estacion,fila/3,columna/3,anchoCasillero,altoCasillero,ventana.p_render);//creo estacion
     crearMoneda(moneda,ventana.p_render);
     crearMapa(mapa,ventana.p_render);
@@ -48,6 +51,7 @@ int main(int argc,char *args[])
         dibujarEstacion(estacion,ventana.p_render);
         dibujarMoneda(moneda,ventana.p_render);
         dibujarTren(tren,ventana.p_render,0);
+        //evaluarEventosDelTeclado(tren);//hace cosas raras,no funciona
         renderPresent(ventana);
         actualizar(ventana);
 
@@ -63,3 +67,5 @@ int main(int argc,char *args[])
     destruirVentana(ventana);
     return 0;
 }
+
+
