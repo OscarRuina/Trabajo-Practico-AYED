@@ -2,6 +2,7 @@
 #define ManejoVentana_h
 #include <SDL.h>
 #include <SDL_image.h>
+#include "Tren.h"
 /*Definicion del tipo de dato para manejo de ventana*/
 /*
 Atributos:
@@ -55,7 +56,7 @@ PRE: ventana creada con crear
 POST: manejo de distintos eventos
 ventana:instancia sobre la cual se invoca la primitiva
 */
-void manejarEventos(Ventana &ventana);
+void manejarEventos(Ventana &ventana,Tren &Tren);
 /*----------------------------------*/
 /*
 PRE: ventana creada con crear

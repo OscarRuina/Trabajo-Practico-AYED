@@ -103,5 +103,5 @@ char direccion nuevo valor a setear
 */
 void setDireccion(Tren &tren,char direccion[]);
 /*----------------------------------*/
-void evaluarEventosDelTeclado(Tren &tren);
+
 #endif // Tren_h

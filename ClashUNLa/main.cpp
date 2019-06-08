@@ -44,7 +44,7 @@ int main(int argc,char *args[])
         frameStart = SDL_GetTicks();
 
 
-        manejarEventos(ventana);
+        manejarEventos(ventana,tren);
         renderClear(ventana);
         dibujarMapa(mapa,ventana.p_render);
         //aca iria los dibujar de cada objeto del juego
