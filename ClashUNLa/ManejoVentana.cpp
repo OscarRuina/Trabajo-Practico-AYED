@@ -85,7 +85,9 @@ void renderPresent(Ventana &ventana){
     SDL_RenderPresent(ventana.p_render);
 }
 
-void actualizar(Ventana &ventana){}
+void actualizar(Ventana &ventana){
+
+}
 
 void destruirVentana(Ventana &ventana){
     cout<<"Cierro ventana"<<endl;

@@ -28,9 +28,6 @@ int main(int argc,char *args[])
 
     crearVentana(ventana);//creo ventana
     InicializarVentana(ventana,"ClashUNLa",pos,pos,ancho,alto,SDL_WINDOW_RESIZABLE);//la inicializo
-    /*SDL_Event event;
-    const unsigned char *keys;
-    keys = SDL_GetKeyboardState(NULL);*/
     crearEstacion(estacion,fila/3,columna/3,anchoCasillero,altoCasillero,ventana.p_render);//creo estacion
     crearMoneda(moneda,ventana.p_render);
     crearMapa(mapa,ventana.p_render);
@@ -46,12 +43,12 @@ int main(int argc,char *args[])
 
         manejarEventos(ventana,tren);
         renderClear(ventana);
-        dibujarMapa(mapa,ventana.p_render);
         //aca iria los dibujar de cada objeto del juego
+        dibujarMapa(mapa,ventana.p_render);
         dibujarEstacion(estacion,ventana.p_render);
         dibujarMoneda(moneda,ventana.p_render);
         dibujarTren(tren,ventana.p_render,0);
-        //evaluarEventosDelTeclado(tren);//hace cosas raras,no funciona
+        /*-----------------------------*/
         renderPresent(ventana);
         actualizar(ventana);
 

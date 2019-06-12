@@ -14,7 +14,7 @@
 1557093357 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\variablesfijas.h
 	<SDL.h>
 
-1560016594 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
+1560368729 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
 	<iostream>
 	<string.h>
 	<conio.h>
@@ -35,7 +35,7 @@
 1560006627 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\variablesfijas.h
 	<SDL.h>
 
-1560016776 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
+1560019501 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
 	"ManejoVentana.h"
 	<iostream>
 	<SDL.h>
@@ -44,7 +44,7 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1558629877 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.cpp
+1560368709 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.cpp
 	"Estacion.h"
 
 1558801199 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.h

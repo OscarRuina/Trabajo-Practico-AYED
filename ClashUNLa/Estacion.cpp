@@ -3,7 +3,7 @@
 void crearEstacion(Estacion &estacion,int f,int c,int anchoCasillero,int altoCasillero,SDL_Renderer *renderer){
     estacion.f = f;
     estacion.c = c;
-    estacion.imagen = IMG_LoadTexture(renderer,"img/villano.png");//para probar si funciona,cambiar mas adelante la imagen
+    estacion.imagen = IMG_LoadTexture(renderer,"img/estacion.png");
     estacion.rectImagen.y = f * altoCasillero;
     estacion.rectImagen.x = c * anchoCasillero;
     estacion.rectImagen.h = altoCasillero;
