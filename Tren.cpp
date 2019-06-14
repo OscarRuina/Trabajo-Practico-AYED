@@ -32,39 +32,38 @@ void setFila(Tren &tren,int desplazamiento){
 void setColumna(Tren &tren,int desplazamiento){
     tren.c = tren.c + desplazamiento;
 }
-void dibujarTren(Tren &tren,SDL_Renderer* renderer){
+void dibujarTren(Tren &tren,SDL_Renderer* renderer,int turno){
+    char imagen[30] = "img/";
+    strcat(imagen,tren.tipo);strcat(imagen,"/");
+    strcat(imagen,tren.direccion);strcat(imagen,"/");
+    char cadenaIntervalo[5];
+    itoa(turno,cadenaIntervalo,10);
+    strcat(imagen,cadenaIntervalo);strcat(imagen,".png");
 
-    tren.imagen=IMG_LoadTexture(renderer,"img/c1/aba/0.png");
 
     //evaluamos los desplazamientos
-    int desplazamientoHorizontal=0;
-    int desplazamientoVertical=0;
-    if(strcmp(tren.direccion,"aba")==0)desplazamientoVertical=2;
-    if(strcmp(tren.direccion,"arr")==0)desplazamientoVertical=-2;
-    if(strcmp(tren.direccion,"der")==0)desplazamientoHorizontal=2;
-    if(strcmp(tren.direccion,"izq")==0)desplazamientoHorizontal=-2;
+    int velY=0;
+    int velX=0;
+    if(!verificarDireccion(tren,"aba"))velX=3;
+    if(!verificarDireccion(tren,"arr"))velX=-3;
+    if(!verificarDireccion(tren,"der"))velY=3;
+    if(!verificarDireccion(tren,"izq"))velY=-3;
 
-    moverTren(tren,desplazamientoHorizontal,desplazamientoVertical);
+    moverTren(tren,velY,velX);
+
+    tren.imagen=IMG_LoadTexture(renderer,imagen);
 
     SDL_RenderCopy(renderer,tren.imagen,NULL,&(tren.rectImag));
-    tren.posImagen++;
-    if(tren.posImagen==9){
-        tren.posImagen=0;
-    }
 }
 
+bool verificarDireccion(Tren &tren,char direc[]){
+    return strcmp(tren.direccion,direc);
+}
 
+void moverTren(Tren &tren, int velX,int velY){
 
-
-void cargarIzquierda(Tren &tren);
-void cargarDerecha(Tren &tren);
-void cargarArriba(Tren &tren);
-void cargarAbajo(Tren &tren);
-
-void moverTren(Tren &tren, int desplazamientoHorizontal,int desplazamientoVertical){
-
-    tren.rectImag.x=tren.rectImag.x+desplazamientoHorizontal;
-    tren.rectImag.y=tren.rectImag.y+desplazamientoVertical;
+    tren.rectImag.x=tren.rectImag.x+velX;
+    tren.rectImag.y=tren.rectImag.y+velY;
     tren.rectImag.w=tren.anchoCasillero;//70
     tren.rectImag.h=tren.altoSprite;//70
 }
