@@ -8,6 +8,7 @@ void crearVentana(Ventana &ventana){
     ventana.p_ventana = 0;
     ventana.p_render = 0;
     ventana.run = true;
+    ventana.turno = 0;
 
 }
 
@@ -15,10 +16,16 @@ void setRun(Ventana &ventana,bool run){
     ventana.run = run;
 }
 
+
+void setTurno(Ventana &ventana,int turno){
+    ventana.turno = turno;
+}
 bool getRun(Ventana &ventana){
     return ventana.run;
 }
-
+int getTurno(Ventana &ventana){
+    return ventana.turno;
+}
 bool InicializarVentana(Ventana &ventana, const char *titulo,int posx,int posy,int ancho,int alto,int flags){
     if(SDL_Init(SDL_INIT_EVERYTHING)>=0){//inicializa todo
         cout<<"SDL Inicializo correctamente"<<endl;

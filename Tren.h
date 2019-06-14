@@ -25,7 +25,7 @@ typedef struct{
     int altoSprite;
     int posTX;
     int posTY;
-    char imagenes[3][9];
+
     int posImagen;
 
 	SDL_Texture *imagen;
@@ -83,7 +83,7 @@ tren instancia sobre la que actua la primitiva
 renderer puntero del render en ventana
 intervalo
 */
-void dibujarTren(Tren &tren,SDL_Renderer* renderer);
+void dibujarTren(Tren &tren,SDL_Renderer* renderer,int turno);
 /*----------------------------------
 PRE: tren creado con crear
 POST: tren mueve de posicion
@@ -93,19 +93,12 @@ intervalo
 */
 void moverTren(Tren &tren, int desplazamientoHorizontal,int desplazamientoVertical);
 /*----------------------------------*/
+bool verificarDireccion(Tren &tren,char direc[]);
 /*
-
 PRE: tren creado con crear
 POST: tren borrado de la ventana
 tren instancia sobre la cual actua la primitiva
 */
-/*PRE: Vector creado
-POST: Carga las imagenes en los vectores*/
-void cargarImagenes();
-void cargarIzquierda();
-void cargarDerecha();
-void cargarArriba();
-void cargarAbajo();
 
 void destruirTren(Tren &tren);
 /*----------------------------------*/
