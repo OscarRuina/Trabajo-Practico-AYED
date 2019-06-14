@@ -72,3 +72,82 @@
 	<SDL.h>
 	<SDL_image.h>
 
+1560534596 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\estacion.cpp
+	"Estacion.h"
+
+1560368896 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\estacion.h
+	<SDL.h>
+	<SDL_image.h>
+
+1560549788 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\main.cpp
+	<iostream>
+	<string.h>
+	<conio.h>
+	<stdlib.h>
+	<SDL.h>
+	"ManejoVentana.h"
+	"Estacion.h"
+	"Moneda.h"
+	"Mapa.h"
+	"Tren.h"
+	"VariablesFijas.h"
+
+1560549348 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\manejoventana.h
+	<SDL.h>
+	<SDL_image.h>
+	"Tren.h"
+
+1560550205 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\tren.h
+	<SDL.h>
+	<SDL_image.h>
+
+1560368896 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\moneda.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdlib.h>
+
+1560368896 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\mapa.h
+	<SDL.h>
+
+1560534657 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\variablesfijas.h
+	<SDL.h>
+
+1560549371 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\manejoventana.cpp
+	"ManejoVentana.h"
+	<iostream>
+	<SDL.h>
+
+1560534112 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\mapa.cpp
+	"Mapa.h"
+	<SDL.h>
+	<SDL_image.h>
+
+1560368896 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\moneda.cpp
+	"Moneda.h"
+
+1560550529 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\tren.cpp
+	"Tren.h"
+	<stdlib.h>
+	<string.h>
+
+1560532452 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\mina.cpp
+	"Mina.h"
+	<SDL.h>
+	<SDL_image.h>
+	"Funciones.h"
+
+1560532175 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\mina.h
+	<SDL.h>
+	<SDL_image.h>
+	"TiposMinerales.h"
+	"Funciones.h"
+
+1560531558 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\tiposminerales.h
+
+1560531847 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\funciones.h
+	<cstdlib>
+	"time.h"
+
+1560531576 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\tiposminerales.cpp
+	"TiposMinerales.h"
+

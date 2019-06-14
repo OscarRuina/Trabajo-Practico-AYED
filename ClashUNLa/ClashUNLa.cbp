@@ -34,12 +34,17 @@
 		</Compiler>
 		<Unit filename="Estacion.cpp" />
 		<Unit filename="Estacion.h" />
+		<Unit filename="Funciones.h" />
 		<Unit filename="ManejoVentana.cpp" />
 		<Unit filename="ManejoVentana.h" />
 		<Unit filename="Mapa.cpp" />
 		<Unit filename="Mapa.h" />
+		<Unit filename="Mina.cpp" />
+		<Unit filename="Mina.h" />
 		<Unit filename="Moneda.cpp" />
 		<Unit filename="Moneda.h" />
+		<Unit filename="TiposMinerales.cpp" />
+		<Unit filename="TiposMinerales.h" />
 		<Unit filename="Tren.cpp" />
 		<Unit filename="Tren.h" />
 		<Unit filename="VariablesFijas.h" />

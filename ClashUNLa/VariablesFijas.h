@@ -2,7 +2,7 @@
 #define VariablesFijas_h
 #include <SDL.h>
 #define pos  SDL_WINDOWPOS_CENTERED
-#define anchoCasillero 70
+#define anchoCasillero 80
 #define altoCasillero 60
 #define altoSprite 70
 #define fila 10

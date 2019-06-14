@@ -7,7 +7,7 @@ void crearMapa(Mapa &mapa,SDL_Renderer *renderer){
     mapa.heigth = 600;
     mapa.col = 40;
     mapa.fil = 30;
-    mapa.textura = IMG_LoadTexture(renderer,"img/suelo_4.png");
+    mapa.textura = IMG_LoadTexture(renderer,"img/suelo.png");
     mapa.destino.x = 0;
     mapa.destino.y = 0;
     mapa.destino.h = mapa.heigth;

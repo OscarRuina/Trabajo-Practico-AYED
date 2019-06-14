@@ -8,16 +8,24 @@ void crearVentana(Ventana &ventana){
     ventana.p_ventana = 0;
     ventana.p_render = 0;
     ventana.run = true;
+    ventana.turno = 0;
+
 }
 
 void setRun(Ventana &ventana,bool run){
     ventana.run = run;
 }
 
+
+void setTurno(Ventana &ventana,int turno){
+    ventana.turno = turno;
+}
 bool getRun(Ventana &ventana){
     return ventana.run;
 }
-
+int getTurno(Ventana &ventana){
+    return ventana.turno;
+}
 bool InicializarVentana(Ventana &ventana, const char *titulo,int posx,int posy,int ancho,int alto,int flags){
     if(SDL_Init(SDL_INIT_EVERYTHING)>=0){//inicializa todo
         cout<<"SDL Inicializo correctamente"<<endl;
@@ -47,7 +55,8 @@ bool InicializarVentana(Ventana &ventana, const char *titulo,int posx,int posy,i
     return ventana.run;
 }
 
-void manejarEventos(Ventana &ventana,Tren &tren){
+bool ManejarEventos(Ventana &ventana,Tren &tren){
+    bool estado = false;
     SDL_Event eventos;
     const unsigned char *keys;
     keys = SDL_GetKeyboardState(NULL);
@@ -58,23 +67,29 @@ void manejarEventos(Ventana &ventana,Tren &tren){
             case SDL_KEYDOWN:
                 if(keys[SDL_SCANCODE_LEFT]){
                     setDireccion(tren,"izq");
-                    setColumna(tren,-1);
+                    estado = true;
+
                 }
                 if(keys[SDL_SCANCODE_RIGHT]){
                     setDireccion(tren,"der");
-                    setColumna(tren,+1);
+                    estado = true;
+
                 }
                 if(keys[SDL_SCANCODE_UP]){
                     setDireccion(tren,"arr");
-                    setFila(tren,-1);
+                    estado = true;
+
+
                 }
                 if(keys[SDL_SCANCODE_DOWN]){
                     setDireccion(tren,"aba");
-                    setFila(tren,+1);
+                    estado = true;
+
                 }
                 break;
         }
     }
+    return estado;;
 }
 
 void renderClear(Ventana &ventana){

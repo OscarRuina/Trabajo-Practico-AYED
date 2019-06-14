@@ -60,10 +60,10 @@ bool verificarDireccion(Tren &tren,char direc[]){
     return strcmp(tren.direccion,direc);
 }
 
-void moverTren(Tren &tren, int desplazamientoHorizontal,int desplazamientoVertical){
+void moverTren(Tren &tren, int velX,int velY){
 
-    tren.rectImag.x=tren.rectImag.x+desplazamientoHorizontal;
-    tren.rectImag.y=tren.rectImag.y+desplazamientoVertical;
+    tren.rectImag.x=tren.rectImag.x+velX;
+    tren.rectImag.y=tren.rectImag.y+velY;
     tren.rectImag.w=tren.anchoCasillero;//70
     tren.rectImag.h=tren.altoSprite;//70
 }
