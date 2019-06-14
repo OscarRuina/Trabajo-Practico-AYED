@@ -23,6 +23,10 @@ typedef struct{
     int anchoCasillero;
     int altoCasillero;
     int altoSprite;
+    int posTX;
+    int posTY;
+
+    int posImagen;
 
 	SDL_Texture *imagen;
     SDL_Rect rectImag;
@@ -40,7 +44,7 @@ altoCasillero: valor alto de la imagen
 altoSprite: valor del sprite
 *renderer: puntero del TDA ventana de tipo renderer
 */
-void crearTren(Tren &tren,char tipo[], int f,int c, char direccion[], int anchoCasillero, int altoCasillero, int altoSprite);
+void crearTren(Tren &tren,char tipo[], int f,int c, int anchoCasillero, int altoCasillero, int altoSprite);
 /*----------------------------------*/
 /*
 PRE:tren creado con crear
@@ -79,13 +83,23 @@ tren instancia sobre la que actua la primitiva
 renderer puntero del render en ventana
 intervalo
 */
-void dibujarTren(Tren &tren,SDL_Renderer* renderer,int intervalo);
+void dibujarTren(Tren &tren,SDL_Renderer* renderer,int turno);
+/*----------------------------------
+PRE: tren creado con crear
+POST: tren mueve de posicion
+tren instancia sobre la que actua la primitiva
+renderer puntero del render en ventana
+intervalo
+*/
+void moverTren(Tren &tren, int desplazamientoHorizontal,int desplazamientoVertical);
 /*----------------------------------*/
+bool verificarDireccion(Tren &tren,char direc[]);
 /*
 PRE: tren creado con crear
 POST: tren borrado de la ventana
 tren instancia sobre la cual actua la primitiva
 */
+
 void destruirTren(Tren &tren);
 /*----------------------------------*/
 /*

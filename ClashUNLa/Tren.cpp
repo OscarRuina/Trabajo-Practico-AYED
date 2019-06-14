@@ -2,14 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 /*Implemtacion de primitivas*/
-void crearTren(Tren &tren,char tipo[], int f,int c, char direccion[], int anchoCasillero, int altoCasillero, int altoSprite){
+void crearTren(Tren &tren,char tipo[], int f,int c, int anchoCasillero, int altoCasillero, int altoSprite){
     strcpy(tren.tipo,tipo);
     tren.f=f;//coordenada logica y
     tren.c=c;//coordenada logica x
-    strcpy(tren.direccion,direccion);
+    setDireccion(tren,"aba");
     tren.anchoCasillero=anchoCasillero;
     tren.altoCasillero=altoCasillero;
     tren.altoSprite=altoSprite;
+    tren.posTX=0;
+    tren.posTY=0;
+    tren.posImagen = 0;
+    tren.rectImag.x=0;
+    tren.rectImag.y=0;
+    tren.rectImag.w=anchoCasillero;
+    tren.rectImag.h=altoCasillero;
+
 }
 int getFila(Tren &tren){
     return tren.f;
@@ -24,32 +32,40 @@ void setFila(Tren &tren,int desplazamiento){
 void setColumna(Tren &tren,int desplazamiento){
     tren.c = tren.c + desplazamiento;
 }
-void dibujarTren(Tren &tren,SDL_Renderer* renderer,int intervalo){
+void dibujarTren(Tren &tren,SDL_Renderer* renderer,int turno){
     char imagen[30] = "img/";
     strcat(imagen,tren.tipo);strcat(imagen,"/");
-
     strcat(imagen,tren.direccion);strcat(imagen,"/");
-
     char cadenaIntervalo[5];
-    itoa(intervalo,cadenaIntervalo,10);
+    itoa(turno,cadenaIntervalo,10);
     strcat(imagen,cadenaIntervalo);strcat(imagen,".png");
+
+
+    //evaluamos los desplazamientos
+    int velY=0;
+    int velX=0;
+    if(!verificarDireccion(tren,"aba"))velX=3;
+    if(!verificarDireccion(tren,"arr"))velX=-3;
+    if(!verificarDireccion(tren,"der"))velY=3;
+    if(!verificarDireccion(tren,"izq"))velY=-3;
+
+    moverTren(tren,velY,velX);
 
     tren.imagen=IMG_LoadTexture(renderer,imagen);
 
-    //evaluamos los desplazamientos
-    int desplazamientoHorizontal=0;
-    int desplazamientoVertical=0;
-    if(strcmp(tren.direccion,"aba")==0)desplazamientoVertical=1;
-    if(strcmp(tren.direccion,"arr")==0)desplazamientoVertical=-1;
-    if(strcmp(tren.direccion,"der")==0)desplazamientoHorizontal=1;
-    if(strcmp(tren.direccion,"izq")==0)desplazamientoHorizontal=-1;
+    SDL_RenderCopy(renderer,tren.imagen,NULL,&(tren.rectImag));
+}
 
-    tren.rectImag.y=((tren.f*tren.altoCasillero)+tren.altoCasillero-(tren.altoSprite-tren.altoCasillero))+(desplazamientoVertical*(tren.altoCasillero/10)*intervalo);//coordenada de dibujo y
-    tren.rectImag.x=((tren.c*tren.anchoCasillero)+tren.anchoCasillero)+(desplazamientoHorizontal*(tren.anchoCasillero/10)*intervalo);//coordenada de dibujo x
+bool verificarDireccion(Tren &tren,char direc[]){
+    return strcmp(tren.direccion,direc);
+}
+
+void moverTren(Tren &tren, int desplazamientoHorizontal,int desplazamientoVertical){
+
+    tren.rectImag.x=tren.rectImag.x+desplazamientoHorizontal;
+    tren.rectImag.y=tren.rectImag.y+desplazamientoVertical;
     tren.rectImag.w=tren.anchoCasillero;//70
     tren.rectImag.h=tren.altoSprite;//70
-
-    SDL_RenderCopy(renderer,tren.imagen,NULL,&(tren.rectImag));
 }
 void destruirTren(Tren &tren){
     SDL_DestroyTexture(tren.imagen);
