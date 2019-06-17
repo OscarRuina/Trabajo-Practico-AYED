@@ -1,7 +1,6 @@
 #include "Mina.h"
 #include <SDL.h>
 #include <SDL_image.h>
-#include "Funciones.h"
 
 void crearMina(Mina &mina,SDL_Renderer *renderer){
     mina.ancho =40;

@@ -9,6 +9,7 @@
 #include "Mapa.h"
 #include "Tren.h"
 #include "VariablesFijas.h"
+#include "Caravana.h"
 using namespace std;
 
 int main(int argc,char *args[])
@@ -24,7 +25,7 @@ int main(int argc,char *args[])
     Tren tren;
     Estacion estacion;
     Mapa mapa;
-    int turno;
+    Caravana caravana;
 
     crearVentana(ventana);//creo ventana
     InicializarVentana(ventana,"ClashUNLa",pos,pos,ancho,alto,SDL_WINDOW_RESIZABLE);//la inicializo
@@ -32,10 +33,11 @@ int main(int argc,char *args[])
     crearMoneda(moneda,ventana.p_render);
     crearMapa(mapa,ventana.p_render);
     crearTren(tren,"c1", 0, 0,anchoCasillero, altoCasillero, altoSprite);
-
+    crearCaravana(caravana);
+    agregarPrimero(caravana,tren);
+bool a= true;
     while(getRun(ventana)){
-            turno = getTurno(ventana);
-            cout<<turno<<endl;
+
 
             //tomo el tiempo del primer frame
             frameStart = SDL_GetTicks();
@@ -46,7 +48,7 @@ int main(int argc,char *args[])
             dibujarMapa(mapa,ventana.p_render);
             dibujarEstacion(estacion,ventana.p_render);
             dibujarMoneda(moneda,ventana.p_render);
-            dibujarTren(tren,ventana.p_render,turno);
+            dibujarTren(tren,ventana.p_render);
             renderPresent(ventana);
 
 
@@ -55,12 +57,6 @@ int main(int argc,char *args[])
             if(frameDelay> frameTime){
                 SDL_Delay(frameDelay - frameTime);
             }
-            setTurno(ventana,turno+1);
-            if(turno==9){
-                setTurno(ventana,0);
-            }
-
-
 
     }
     destruirEstacion(estacion);

@@ -8,7 +8,6 @@ void crearVentana(Ventana &ventana){
     ventana.p_ventana = 0;
     ventana.p_render = 0;
     ventana.run = true;
-    ventana.turno = 0;
 
 }
 
@@ -17,19 +16,14 @@ void setRun(Ventana &ventana,bool run){
 }
 
 
-void setTurno(Ventana &ventana,int turno){
-    ventana.turno = turno;
-}
 bool getRun(Ventana &ventana){
     return ventana.run;
 }
-int getTurno(Ventana &ventana){
-    return ventana.turno;
-}
+
 bool InicializarVentana(Ventana &ventana, const char *titulo,int posx,int posy,int ancho,int alto,int flags){
     if(SDL_Init(SDL_INIT_EVERYTHING)>=0){//inicializa todo
         cout<<"SDL Inicializo correctamente"<<endl;
-        ventana.p_ventana = SDL_CreateWindow(titulo,posx,posy,ancho,alto,flags);//creo ventana
+        ventana.p_ventana = SDL_CreateWindow(titulo,posx,posy,800,600,flags);//creo ventana
         if(ventana.p_ventana != 0){
             cout<<"Ventana creada correctamente"<<endl;
             ventana.p_render = SDL_CreateRenderer(ventana.p_ventana,-1,0);//creo render
@@ -55,8 +49,8 @@ bool InicializarVentana(Ventana &ventana, const char *titulo,int posx,int posy,i
     return ventana.run;
 }
 
-bool ManejarEventos(Ventana &ventana,Tren &tren){
-    bool estado = false;
+void ManejarEventos(Ventana &ventana,Tren &tren){
+
     SDL_Event eventos;
     const unsigned char *keys;
     keys = SDL_GetKeyboardState(NULL);
@@ -66,30 +60,29 @@ bool ManejarEventos(Ventana &ventana,Tren &tren){
             break;
             case SDL_KEYDOWN:
                 if(keys[SDL_SCANCODE_LEFT]){
-                    setDireccion(tren,"izq");
-                    estado = true;
-
+                    if(verificarDireccion(tren,"der")){
+                       setDireccion(tren,"izq");
+                    }
                 }
                 if(keys[SDL_SCANCODE_RIGHT]){
-                    setDireccion(tren,"der");
-                    estado = true;
+                    if(verificarDireccion(tren,"izq")){
+                        setDireccion(tren,"der");
+                    }
 
                 }
                 if(keys[SDL_SCANCODE_UP]){
-                    setDireccion(tren,"arr");
-                    estado = true;
-
-
+                    if(verificarDireccion(tren,"aba")){
+                        setDireccion(tren,"arr");
+                    }
                 }
                 if(keys[SDL_SCANCODE_DOWN]){
-                    setDireccion(tren,"aba");
-                    estado = true;
-
+                    if(verificarDireccion(tren,"arr")){
+                            setDireccion(tren,"aba");
+                    }
                 }
                 break;
         }
     }
-    return estado;;
 }
 
 void renderClear(Ventana &ventana){

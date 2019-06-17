@@ -3,7 +3,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "TiposMinerales.h"
-#include "Funciones.h"
 
 struct Mina{
     int ancho;

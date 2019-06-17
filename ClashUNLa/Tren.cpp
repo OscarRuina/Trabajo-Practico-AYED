@@ -6,6 +6,7 @@ void crearTren(Tren &tren,char tipo[], int f,int c, int anchoCasillero, int alto
     strcpy(tren.tipo,tipo);
     tren.f=f;//coordenada logica y
     tren.c=c;//coordenada logica x
+    tren.ciclo = 0;
     setDireccion(tren,"aba");
     tren.anchoCasillero=anchoCasillero;
     tren.altoCasillero=altoCasillero;
@@ -19,41 +20,36 @@ void crearTren(Tren &tren,char tipo[], int f,int c, int anchoCasillero, int alto
     tren.rectImag.h=altoCasillero;
 
 }
-int getFila(Tren &tren){
-    return tren.f;
-}
 
-int getColumna(Tren &tren){
-    return tren.c;
-}
-void setFila(Tren &tren,int desplazamiento){
-    tren.f = tren.f + desplazamiento;
-}
-void setColumna(Tren &tren,int desplazamiento){
-    tren.c = tren.c + desplazamiento;
-}
-void dibujarTren(Tren &tren,SDL_Renderer* renderer,int turno){
+
+void dibujarTren(Tren &tren,SDL_Renderer* renderer){
+    int ciclo = getCiclo(tren);
     char imagen[30] = "img/";
     strcat(imagen,tren.tipo);strcat(imagen,"/");
     strcat(imagen,tren.direccion);strcat(imagen,"/");
     char cadenaIntervalo[5];
-    itoa(turno,cadenaIntervalo,10);
+    itoa(ciclo,cadenaIntervalo,10);
     strcat(imagen,cadenaIntervalo);strcat(imagen,".png");
 
 
     //evaluamos los desplazamientos
     int velY=0;
     int velX=0;
-    if(!verificarDireccion(tren,"aba"))velX=3;
-    if(!verificarDireccion(tren,"arr"))velX=-3;
-    if(!verificarDireccion(tren,"der"))velY=3;
-    if(!verificarDireccion(tren,"izq"))velY=-3;
+    if(!verificarDireccion(tren,"aba"))velX=1;
+    if(!verificarDireccion(tren,"arr"))velX=-1;
+    if(!verificarDireccion(tren,"der"))velY=1;
+    if(!verificarDireccion(tren,"izq"))velY=-1;
 
     moverTren(tren,velY,velX);
 
     tren.imagen=IMG_LoadTexture(renderer,imagen);
 
     SDL_RenderCopy(renderer,tren.imagen,NULL,&(tren.rectImag));
+    ciclo++;
+    setCiclo(tren,ciclo);
+    if(ciclo==9){
+        setCiclo(tren,0);
+    }
 }
 
 bool verificarDireccion(Tren &tren,char direc[]){
@@ -77,3 +73,13 @@ void setDireccion(Tren &tren,char direccion[]){
     strcpy(tren.direccion,direccion);
 }
 
+void setCiclo(Tren &tren,int ciclo){
+    tren.ciclo=ciclo;
+}
+int getCiclo(Tren &tren){
+    return tren.ciclo;
+}
+
+bool verificarTipo(Tren &tren,char tipo[]){
+    return strcmp(tren.direccion,tipo);
+}

@@ -1,20 +1,15 @@
 #ifndef MAPA_H
 #define MAPA_H
 #include <SDL.h>
+#include "Bloque.h"
+
 
 typedef struct{
-    int id;
-    int posX;
-    int posY;
-    bool ocupado;
-}Bloque;
-
-typedef struct{
-    int width;
-    int heigth;
+    int ancho;
+    int alto;
     int col;
     int fil;
-//    Bloque bloques[][];
+    Bloque bloques[15][20];
     SDL_Rect destino;
     SDL_Texture* textura;
 
@@ -25,7 +20,5 @@ typedef struct{
 void crearMapa(Mapa &mapa,SDL_Renderer *renderer);
 void dibujarMapa(Mapa &mapa,SDL_Renderer *renderer);
 void destruirMapa(Mapa &mapa);
-void crearBloque(Bloque &bloque,int fil,int col);
-void destruirBloque(Bloque &bloque);
-
+void mostrarBloquesMapa(Mapa &mapa);
 #endif // MAPA_H
