@@ -21,7 +21,7 @@ void mostrarBloque(Bloque &bloque);
 void eliminarBloque(Bloque &bloque);
 void setMoneda();
 void setVillano();
-void setEstacion();
+void setEstacion(Estacion *estacion,int fil,int col);
 void setMina();
 Moneda* getMoneda();
 //Villano* getVillano();

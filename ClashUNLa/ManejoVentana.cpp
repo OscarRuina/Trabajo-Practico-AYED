@@ -8,7 +8,15 @@ void crearVentana(Ventana &ventana){
     ventana.p_ventana = 0;
     ventana.p_render = 0;
     ventana.run = true;
+    int turno = 0;
+}
 
+void setTurno(Ventana &ventana,int turno){
+    ventana.turno = turno;
+}
+
+int getTurno(Ventana &ventana){
+    return ventana.turno;
 }
 
 void setRun(Ventana &ventana,bool run){
@@ -49,8 +57,8 @@ bool InicializarVentana(Ventana &ventana, const char *titulo,int posx,int posy,i
     return ventana.run;
 }
 
-void ManejarEventos(Ventana &ventana,Tren &tren){
-
+bool ManejarEventos(Ventana &ventana,Tren &tren){
+    bool seguir = false;
     SDL_Event eventos;
     const unsigned char *keys;
     keys = SDL_GetKeyboardState(NULL);
@@ -62,22 +70,29 @@ void ManejarEventos(Ventana &ventana,Tren &tren){
                 if(keys[SDL_SCANCODE_LEFT]){
                     if(verificarDireccion(tren,"der")){
                        setDireccion(tren,"izq");
+                       seguir = true;
                     }
                 }
                 if(keys[SDL_SCANCODE_RIGHT]){
                     if(verificarDireccion(tren,"izq")){
                         setDireccion(tren,"der");
+                        seguir = true;
+
                     }
 
                 }
                 if(keys[SDL_SCANCODE_UP]){
                     if(verificarDireccion(tren,"aba")){
                         setDireccion(tren,"arr");
+                        seguir = true;
+
                     }
                 }
                 if(keys[SDL_SCANCODE_DOWN]){
                     if(verificarDireccion(tren,"arr")){
-                            setDireccion(tren,"aba");
+                        setDireccion(tren,"aba");
+                        seguir = true;
+
                     }
                 }
                 break;

@@ -10,14 +10,13 @@ void crearTren(Tren &tren,char tipo[], int f,int c, int anchoCasillero, int alto
     setDireccion(tren,"aba");
     tren.anchoCasillero=anchoCasillero;
     tren.altoCasillero=altoCasillero;
-    tren.altoSprite=altoSprite;
-    tren.posTX=0;
-    tren.posTY=0;
+    tren.altoSprite=40;
+
     tren.posImagen = 0;
     tren.rectImag.x=0;
     tren.rectImag.y=0;
-    tren.rectImag.w=anchoCasillero;
-    tren.rectImag.h=altoCasillero;
+    tren.rectImag.w=40;
+    tren.rectImag.h=40;
 
 }
 
@@ -82,4 +81,18 @@ int getCiclo(Tren &tren){
 
 bool verificarTipo(Tren &tren,char tipo[]){
     return strcmp(tren.direccion,tipo);
+}
+
+bool compararTren(Tren &tren,Tren &tren2){
+    bool iguales = true;
+    if(tren.tipo!=tren2.tipo){
+        iguales= false;
+    }
+    if(strcmp(tren.direccion,tren2.direccion)!=0){
+        iguales= false;
+    }
+    if(tren.rectImag.x!=tren2.rectImag.x){
+        iguales= false;
+    }
+    return iguales;
 }

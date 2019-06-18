@@ -19,6 +19,7 @@ typedef struct{
     SDL_Window *p_ventana;
     SDL_Renderer *p_render;
     bool run;
+    int turno;
 }Ventana;
 /*---------------------------------*/
 /*
@@ -35,7 +36,8 @@ POST: run seteado con el dato ingresado
 ventana: instancia sobre la cual se invoca la primitiva
 run dato ingresado
 */
-
+void setTurno(Ventana &ventana,int turno);
+int getTurno(Ventana &ventana);
 
 void setRun(Ventana &ventana,bool run);
 /*---------------------------------*/
@@ -59,7 +61,7 @@ PRE: ventana creada con crear
 POST: manejo de distintos eventos
 ventana:instancia sobre la cual se invoca la primitiva
 */
-void ManejarEventos(Ventana &ventana,Tren &tren);
+bool ManejarEventos(Ventana &ventana,Tren &tren);
 /*----------------------------------*/
 /*
 PRE: ventana creada con crear

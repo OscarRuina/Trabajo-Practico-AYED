@@ -23,8 +23,6 @@ typedef struct{
     int anchoCasillero;
     int altoCasillero;
     int altoSprite;
-    int posTX;
-    int posTY;
     int ciclo;
     int posImagen;
 
@@ -119,6 +117,7 @@ char direccion nuevo valor a setear
 void setDireccion(Tren &tren,char direccion[]);
 /*----------------------------------*/
 
+bool compararTren(Tren &tren,Tren &tren2);
 
 
 void setCiclo(Tren &tren,int ciclo);

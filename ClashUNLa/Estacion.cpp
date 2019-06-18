@@ -1,4 +1,5 @@
 #include "Estacion.h"
+#include "Bloque.h"
 /*Implementacion de Primitivas*/
 void crearEstacion(Estacion &estacion,int f,int c,int anchoCasillero,int altoCasillero,SDL_Renderer *renderer){
     estacion.f = f;

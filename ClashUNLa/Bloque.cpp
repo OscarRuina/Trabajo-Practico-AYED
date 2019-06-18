@@ -23,3 +23,5 @@ void mostrarBloque(Bloque &bloque){
     cout<<"Fila: "<<bloque.fil<<endl;
 
 }
+
+
