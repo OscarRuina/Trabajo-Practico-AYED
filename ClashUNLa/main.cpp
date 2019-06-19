@@ -15,7 +15,7 @@ using namespace std;
 int main(int argc,char *args[])
 {
     //variables para capear los fps
-    const int FPS = 30;
+    const int FPS = 120;
     const int frameDelay = 1000/FPS;
     //variables para bloquear el maximo de FPS.
     int frameStart;
@@ -34,29 +34,31 @@ int main(int argc,char *args[])
     crearMapa(mapa,ventana.p_render);
     crearTren(tren,"c1", 0, 0,anchoCasillero, altoCasillero, altoSprite);
     crearCaravana(caravana);
-    agregarPrimero(caravana,tren);
-bool a= true;
+    adicionarPrincipio(caravana,tren);
+
     while(getRun(ventana)){
-
-
-            //tomo el tiempo del primer frame
-            frameStart = SDL_GetTicks();
-
-
-            renderClear(ventana);
-            ManejarEventos(ventana,tren);
             dibujarMapa(mapa,ventana.p_render);
-            dibujarEstacion(estacion,ventana.p_render);
-            dibujarMoneda(moneda,ventana.p_render);
-            dibujarTren(tren,ventana.p_render);
-            renderPresent(ventana);
+            ManejarEventos(ventana,tren);
+                //tomo el tiempo del primer frame
+                frameStart = SDL_GetTicks();
+
+                renderClear(ventana);
+                dibujarMapa(mapa,ventana.p_render);
+                dibujarEstacion(estacion,ventana.p_render);
+                dibujarMoneda(moneda,ventana.p_render);
+                dibujarTren(tren,ventana.p_render);
+                renderPresent(ventana);
+                evaluarColiciones(ventana,mapa,tren);
 
 
-            frameTime = SDL_GetTicks() - frameStart;
-            //si lo que tarda es mas rapido de lo necesario para realizar la cantidad de FPS que asigne , realizara un delay
-            if(frameDelay> frameTime){
-                SDL_Delay(frameDelay - frameTime);
-            }
+                frameTime = SDL_GetTicks() - frameStart;
+                //si lo que tarda es mas rapido de lo necesario para realizar la cantidad de FPS que asigne , realizara un delay
+                if(frameDelay> frameTime){
+                    SDL_Delay(frameDelay - frameTime);
+                }
+
+
+
 
     }
     destruirEstacion(estacion);
