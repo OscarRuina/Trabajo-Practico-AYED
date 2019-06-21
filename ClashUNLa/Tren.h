@@ -2,6 +2,7 @@
 #define Tren_h
 #include <SDL.h>
 #include <SDL_image.h>
+#include <iostream>
 /*TDA tren
 definicion de tipo de dato para manejo de tren
 Atributos:
@@ -15,17 +16,22 @@ Atributos:
  *imagen ---> puntero a imagen
  rectImagen ---> variable para dibujar la imagen
 */
+
+using namespace std;
+
 typedef struct{
     char tipo[3];
     int f;
     int c;
     char direccion[4];
+
     int anchoCasillero;
     int altoCasillero;
     int altoSprite;
-    int ciclo;
-    int posImagen;
 
+    int cicloRender;
+    int ciclo;
+    bool seguir;
 	SDL_Texture *imagen;
     SDL_Rect rectImag;
 }Tren;
@@ -122,5 +128,8 @@ bool compararTren(Tren &tren,Tren &tren2);
 
 void setCiclo(Tren &tren,int ciclo);
 int getCiclo(Tren &tren);
+
+void setCicloRender(Tren &tren,int ciclo);
+int getCicloRender(Tren &tren);
 
 #endif // Tren_h

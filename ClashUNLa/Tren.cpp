@@ -4,15 +4,18 @@
 /*Implemtacion de primitivas*/
 void crearTren(Tren &tren,char tipo[], int f,int c, int anchoCasillero, int altoCasillero, int altoSprite){
     strcpy(tren.tipo,tipo);
+
     tren.f=f;//coordenada logica y
     tren.c=c;//coordenada logica x
-    tren.ciclo = 0;
     setDireccion(tren,"aba");
+
+    tren.seguir = false;
+    tren.ciclo = 0;
+    tren.cicloRender = 0;
+
     tren.anchoCasillero=anchoCasillero;
     tren.altoCasillero=altoCasillero;
     tren.altoSprite=40;
-
-    tren.posImagen = 0;
     tren.rectImag.x=0;
     tren.rectImag.y=0;
     tren.rectImag.w=40;
@@ -22,6 +25,7 @@ void crearTren(Tren &tren,char tipo[], int f,int c, int anchoCasillero, int alto
 
 
 void dibujarTren(Tren &tren,SDL_Renderer* renderer){
+    int cicloRender = getCicloRender(tren);
     int ciclo = getCiclo(tren);
     char imagen[30] = "img/";
     strcat(imagen,tren.tipo);strcat(imagen,"/");
@@ -39,16 +43,19 @@ void dibujarTren(Tren &tren,SDL_Renderer* renderer){
     if(!verificarDireccion(tren,"der"))velY=1;
     if(!verificarDireccion(tren,"izq"))velY=-1;
 
-    moverTren(tren,velY,velX);
-
+        moverTren(tren,velY,velX);
+    cout<<"["<<tren.f<<","<<tren.c<<"]"<<endl;
     tren.imagen=IMG_LoadTexture(renderer,imagen);
 
     SDL_RenderCopy(renderer,tren.imagen,NULL,&(tren.rectImag));
     ciclo++;
+    cicloRender++;
     setCiclo(tren,ciclo);
+    setCicloRender(tren,cicloRender);
     if(ciclo==9){
         setCiclo(tren,0);
     }
+
 }
 
 bool verificarDireccion(Tren &tren,char direc[]){
@@ -77,6 +84,27 @@ void setCiclo(Tren &tren,int ciclo){
 }
 int getCiclo(Tren &tren){
     return tren.ciclo;
+}
+void setColumna(Tren &tren,int col){
+    tren.c = col;
+}
+
+int getColumna(Tren &tren){
+    return tren.c;
+}
+
+void setFila(Tren &tren,int fil){
+    tren.f = fil;
+}
+
+int getFila(Tren &tren){
+    return tren.f;
+}
+void setCicloRender(Tren &tren,int cicloRender){
+    tren.cicloRender=cicloRender;
+}
+int getCicloRender(Tren &tren){
+    return tren.cicloRender;
 }
 
 bool verificarTipo(Tren &tren,char tipo[]){

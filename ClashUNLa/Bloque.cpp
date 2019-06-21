@@ -13,6 +13,7 @@ Bloque crearBloque(int id,int fil,int col){
     bloque.estacion=NULL;
     bloque.mina=NULL;
     bloque.moneda=NULL;
+    bloque.z = false;
   //  bloque.villano=NULL;
   return bloque;
 }

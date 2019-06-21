@@ -35,31 +35,35 @@ int main(int argc,char *args[])
     crearTren(tren,"c1", 0, 0,anchoCasillero, altoCasillero, altoSprite);
     crearCaravana(caravana);
     adicionarPrincipio(caravana,tren);
-
+    int ciclosRender = 0;
     while(getRun(ventana)){
-            dibujarMapa(mapa,ventana.p_render);
-            ManejarEventos(ventana,tren);
+
+
+    mapa.bloques[5][5].z=true;
+                renderClear(ventana);
+                dibujarMapa(mapa,ventana.p_render);
                 //tomo el tiempo del primer frame
                 frameStart = SDL_GetTicks();
-
-                renderClear(ventana);
                 dibujarMapa(mapa,ventana.p_render);
                 dibujarEstacion(estacion,ventana.p_render);
                 dibujarMoneda(moneda,ventana.p_render);
+                if(ciclosRender==0){
+                    ManejarEventos(ventana,tren);
+                }
                 dibujarTren(tren,ventana.p_render);
+
                 renderPresent(ventana);
                 evaluarColiciones(ventana,mapa,tren);
-
 
                 frameTime = SDL_GetTicks() - frameStart;
                 //si lo que tarda es mas rapido de lo necesario para realizar la cantidad de FPS que asigne , realizara un delay
                 if(frameDelay> frameTime){
                     SDL_Delay(frameDelay - frameTime);
                 }
-
-
-
-
+                ciclosRender++;
+                if(ciclosRender==40){
+                    ciclosRender = 0;
+                }
     }
     destruirEstacion(estacion);
     destruirTren(tren);

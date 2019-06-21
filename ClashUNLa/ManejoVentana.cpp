@@ -62,42 +62,46 @@ bool ManejarEventos(Ventana &ventana,Tren &tren){
     SDL_Event eventos;
     const unsigned char *keys;
     keys = SDL_GetKeyboardState(NULL);
-    if(SDL_PollEvent(&eventos)){
-        switch(eventos.type){
+    while(!seguir){
+        if(SDL_WaitEvent(&eventos)){
+            switch(eventos.type){
             case SDL_QUIT: setRun(ventana,false);//para salir de la aplicacion
             break;
             case SDL_KEYDOWN:
                 if(keys[SDL_SCANCODE_LEFT]){
                     if(verificarDireccion(tren,"der")){
                        setDireccion(tren,"izq");
+                       setColumna(tren,getColumna(tren)-1);
                        seguir = true;
                     }
                 }
                 if(keys[SDL_SCANCODE_RIGHT]){
                     if(verificarDireccion(tren,"izq")){
                         setDireccion(tren,"der");
+                        setColumna(tren,getColumna(tren)+1);
                         seguir = true;
-
                     }
-
                 }
                 if(keys[SDL_SCANCODE_UP]){
                     if(verificarDireccion(tren,"aba")){
                         setDireccion(tren,"arr");
+                        setFila(tren,getFila(tren)-1);
                         seguir = true;
-
                     }
                 }
                 if(keys[SDL_SCANCODE_DOWN]){
                     if(verificarDireccion(tren,"arr")){
                         setDireccion(tren,"aba");
+                        setFila(tren,getFila(tren)+1);
                         seguir = true;
-
                     }
                 }
-                break;
+            }
         }
+
+
     }
+
 }
 
 void renderClear(Ventana &ventana){

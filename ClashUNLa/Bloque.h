@@ -9,6 +9,7 @@ struct Bloque
     int idBloque;
     int fil;
     int col;
+    bool z;
     Moneda *moneda;
     //Villano *villano;
     Estacion *estacion;
