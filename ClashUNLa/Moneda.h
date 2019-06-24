@@ -6,18 +6,16 @@
 
 typedef struct
 {
-    int width;
-    int height;
-    int posX;
-    int posY;
+    int fil;
+    int col;
     int vidaUtil;
-    SDL_Rect destino;
+    SDL_Rect rectImg;
     SDL_Texture *textura;
 
 }Moneda;
 
 void crearMoneda(Moneda &moneda,SDL_Renderer* renderer);
-void dibujarMoneda(Moneda &moneda,SDL_Renderer* renderer);
+void dibujarMoneda(Moneda &moneda,SDL_Renderer* renderer,bool turno);
 void destruirMoneda(Moneda &moneda);
-int generarNumeroRandom();
+int generarNumeroRandom(int minimo,int maximo);
 #endif // MONEDA_H

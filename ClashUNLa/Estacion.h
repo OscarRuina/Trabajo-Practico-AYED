@@ -17,8 +17,6 @@ Atributos:
 typedef struct{
   int f;
   int c;
-  int anchoCasillero;
-  int altoCasillero;
   SDL_Texture *imagen;
   SDL_Rect rectImagen;
 }Estacion;
@@ -33,7 +31,7 @@ anchoCasillero: valor ancho de la imagen
 altoCasillero: valor alto de la imagen
 *renderer: puntero del TDA ventana de tipo renderer
 */
-void crearEstacion(Estacion &estacion,int f,int c,int anchoCasillero,int altoCasillero,SDL_Renderer *renderer);
+void crearEstacion(Estacion &estacion,SDL_Renderer *renderer);
 /*----------------------------*/
 /*
 PRE: estacion creada con crear
@@ -50,4 +48,5 @@ estacion: instancia sobre la cual se invoca la primitiva
 */
 void destruirEstacion(Estacion &estacion);
 /*----------------------------*/
+void cargarVariables(Estacion &estacion);
 #endif

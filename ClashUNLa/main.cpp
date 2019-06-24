@@ -9,7 +9,7 @@
 #include "Mapa.h"
 #include "Tren.h"
 #include "VariablesFijas.h"
-#include "Caravana.h"
+
 using namespace std;
 
 int main(int argc,char *args[])
@@ -25,28 +25,32 @@ int main(int argc,char *args[])
     Tren tren;
     Estacion estacion;
     Mapa mapa;
-    Caravana caravana;
 
     crearVentana(ventana);//creo ventana
     InicializarVentana(ventana,"ClashUNLa",pos,pos,ancho,alto,SDL_WINDOW_RESIZABLE);//la inicializo
-    crearEstacion(estacion,fila/3,columna/3,anchoCasillero,altoCasillero,ventana.p_render);//creo estacion
+    crearEstacion(estacion,ventana.p_render);//creo estacion
     crearMoneda(moneda,ventana.p_render);
     crearMapa(mapa,ventana.p_render);
-    crearTren(tren,"c1", 0, 0,anchoCasillero, altoCasillero, altoSprite);
-    crearCaravana(caravana);
-    adicionarPrincipio(caravana,tren);
+    crearTren(tren,"c1");
+
+    bool doOnce = true;
+    bool turnoMoneda = true;
     int ciclosRender = 0;
+    int turno = getTurno(ventana);
     while(getRun(ventana)){
 
 
-    mapa.bloques[5][5].z=true;
                 renderClear(ventana);
                 dibujarMapa(mapa,ventana.p_render);
+                while(doOnce){
+                    renderPresent(ventana);
+                    doOnce = false;
+                }
                 //tomo el tiempo del primer frame
                 frameStart = SDL_GetTicks();
                 dibujarMapa(mapa,ventana.p_render);
                 dibujarEstacion(estacion,ventana.p_render);
-                dibujarMoneda(moneda,ventana.p_render);
+                dibujarMoneda(moneda,ventana.p_render,turnoMoneda);
                 if(ciclosRender==0){
                     ManejarEventos(ventana,tren);
                 }
@@ -61,9 +65,13 @@ int main(int argc,char *args[])
                     SDL_Delay(frameDelay - frameTime);
                 }
                 ciclosRender++;
+                turnoMoneda= false;
                 if(ciclosRender==40){
                     ciclosRender = 0;
+                    setTurno(ventana,getTurno(ventana)+1);
+                    turnoMoneda= true;
                 }
+
     }
     destruirEstacion(estacion);
     destruirTren(tren);

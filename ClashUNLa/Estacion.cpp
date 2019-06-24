@@ -1,18 +1,25 @@
 #include "Estacion.h"
 #include "Bloque.h"
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 /*Implementacion de Primitivas*/
-void crearEstacion(Estacion &estacion,int f,int c,int anchoCasillero,int altoCasillero,SDL_Renderer *renderer){
-    estacion.f = f;
-    estacion.c = c;
+void crearEstacion(Estacion &estacion,SDL_Renderer *renderer){
+    cargarVariables(estacion);
     estacion.imagen = IMG_LoadTexture(renderer,"img/estacion.png");
-    estacion.rectImagen.y = f * altoCasillero;
-    estacion.rectImagen.x = c * anchoCasillero;
-    estacion.rectImagen.h = altoCasillero;
-    estacion.rectImagen.w = anchoCasillero;
 
 }
 
+void cargarVariables(Estacion &estacion){
+    ifstream fin("Estacion.txt");
+    fin>>estacion.f>>estacion.c;
+}
 void dibujarEstacion(Estacion &estacion,SDL_Renderer *renderer){
+    estacion.rectImagen.x = estacion.c*40;
+    estacion.rectImagen.y = estacion.f*40;
+    estacion.rectImagen.w = 40;
+    estacion.rectImagen.h = 40;
     SDL_RenderCopy(renderer,estacion.imagen,NULL,&(estacion.rectImagen));
 }
 

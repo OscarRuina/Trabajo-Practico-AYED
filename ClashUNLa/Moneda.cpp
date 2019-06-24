@@ -1,21 +1,30 @@
 #include "Moneda.h"
+#include <iostream>
+using namespace std;
 
 void crearMoneda(Moneda &moneda,SDL_Renderer* renderer){
-    moneda.width = 70;
-    moneda.height = 70;
-    moneda.posX = 20;
-    moneda.posY = 20;
-    moneda.vidaUtil = generarNumeroRandom();
+
+    moneda.fil = generarNumeroRandom(0,14);
+    moneda.col = generarNumeroRandom(0,19);
+    moneda.vidaUtil = generarNumeroRandom(10,20);
     moneda.textura = IMG_LoadTexture(renderer,"img/moneda.png");
 
-    moneda.destino.h = moneda.height;
-    moneda.destino.w = moneda.width;
-    moneda.destino.x = moneda.posX;
-    moneda.destino.y = moneda.posY;
 }
 
-void dibujarMoneda(Moneda &moneda,SDL_Renderer* renderer){
-    SDL_RenderCopy(renderer,moneda.textura,NULL,&moneda.destino);
+void dibujarMoneda(Moneda &moneda,SDL_Renderer* renderer,bool turno){
+    if(moneda.vidaUtil>0){
+        moneda.rectImg.x = 40*moneda.col;
+    moneda.rectImg.y = 40*moneda.fil;
+    moneda.rectImg.w = 40;
+    moneda.rectImg.h = 40;
+    SDL_RenderCopy(renderer,moneda.textura,NULL,&moneda.rectImg);
+    }
+    if(turno){
+        moneda.vidaUtil--;
+    }
+    if(moneda.vidaUtil<0){
+        destruirMoneda(moneda);
+    }
 
 }
 
@@ -29,9 +38,7 @@ void updateMoneda(Moneda &moneda){
 }
 
 
-int generarNumeroRandom(){
-    int minimo = 7;
-    int maximo = 20;
+int generarNumeroRandom(int minimo,int maximo){
     return (rand() % ((maximo - minimo) + 1) + minimo);
     }
 

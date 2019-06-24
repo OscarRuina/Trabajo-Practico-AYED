@@ -25,10 +25,6 @@ typedef struct{
     int c;
     char direccion[4];
 
-    int anchoCasillero;
-    int altoCasillero;
-    int altoSprite;
-
     int cicloRender;
     int ciclo;
     bool seguir;
@@ -48,7 +44,7 @@ altoCasillero: valor alto de la imagen
 altoSprite: valor del sprite
 *renderer: puntero del TDA ventana de tipo renderer
 */
-void crearTren(Tren &tren,char tipo[], int f,int c, int anchoCasillero, int altoCasillero, int altoSprite);
+void crearTren(Tren &tren,char tipo[]);
 /*----------------------------------*/
 /*
 PRE:tren creado con crear

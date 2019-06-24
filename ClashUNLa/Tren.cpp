@@ -2,20 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 /*Implemtacion de primitivas*/
-void crearTren(Tren &tren,char tipo[], int f,int c, int anchoCasillero, int altoCasillero, int altoSprite){
+void crearTren(Tren &tren,char tipo[]){
     strcpy(tren.tipo,tipo);
+    tren.c =0;
+    tren.f = 0;
 
-    tren.f=f;//coordenada logica y
-    tren.c=c;//coordenada logica x
     setDireccion(tren,"aba");
 
     tren.seguir = false;
     tren.ciclo = 0;
     tren.cicloRender = 0;
 
-    tren.anchoCasillero=anchoCasillero;
-    tren.altoCasillero=altoCasillero;
-    tren.altoSprite=40;
     tren.rectImag.x=0;
     tren.rectImag.y=0;
     tren.rectImag.w=40;
@@ -66,8 +63,8 @@ void moverTren(Tren &tren, int velX,int velY){
 
     tren.rectImag.x=tren.rectImag.x+velX;
     tren.rectImag.y=tren.rectImag.y+velY;
-    tren.rectImag.w=tren.anchoCasillero;//70
-    tren.rectImag.h=tren.altoSprite;//70
+    tren.rectImag.w=40;//70
+    tren.rectImag.h=40  ;//70
 }
 void destruirTren(Tren &tren){
     SDL_DestroyTexture(tren.imagen);
