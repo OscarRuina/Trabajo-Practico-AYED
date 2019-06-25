@@ -13,9 +13,15 @@ Bloque crearBloque(int id,int fil,int col){
     bloque.estacion=NULL;
     bloque.mina=NULL;
     bloque.moneda=NULL;
-    bloque.z = false;
+    bloque.ocupado = false;
   //  bloque.villano=NULL;
   return bloque;
+}
+
+void setEstacion(Bloque &bloque,Estacion *estacion){
+    bloque.estacion=estacion;
+    bloque.ocupado = true;
+
 }
 
 void mostrarBloque(Bloque &bloque){
@@ -25,4 +31,7 @@ void mostrarBloque(Bloque &bloque){
 
 }
 
+void destruirBloque(Bloque &bloque){
+
+}
 

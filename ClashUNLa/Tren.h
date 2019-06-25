@@ -3,6 +3,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include "TiposMinerales.h"
+
 /*TDA tren
 definicion de tipo de dato para manejo de tren
 Atributos:
@@ -24,10 +26,12 @@ typedef struct{
     int f;
     int c;
     char direccion[4];
-
+    char direccionAnterior[4];
     int cicloRender;
     int ciclo;
     bool seguir;
+    TiposMinerales tipoMineral;
+
 	SDL_Texture *imagen;
     SDL_Rect rectImag;
 }Tren;
@@ -128,4 +132,6 @@ int getCiclo(Tren &tren);
 void setCicloRender(Tren &tren,int ciclo);
 int getCicloRender(Tren &tren);
 
+void setDireccionAnterior(Tren &tren, char direccionAnterior[]);
+char* getDireccionAnterior(Tren &tren);
 #endif // Tren_h

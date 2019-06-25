@@ -1,11 +1,13 @@
 #include "Tren.h"
 #include <stdlib.h>
 #include <string.h>
+
 /*Implemtacion de primitivas*/
-void crearTren(Tren &tren,char tipo[]){
+void crearTren(Tren &tren,char tipo[],int fil,int col){
     strcpy(tren.tipo,tipo);
-    tren.c =0;
-    tren.f = 0;
+    tren.c =fil;
+    tren.f = col;
+    tren.tipoMineral = vacio;
 
     setDireccion(tren,"aba");
 
@@ -40,8 +42,7 @@ void dibujarTren(Tren &tren,SDL_Renderer* renderer){
     if(!verificarDireccion(tren,"der"))velY=1;
     if(!verificarDireccion(tren,"izq"))velY=-1;
 
-        moverTren(tren,velY,velX);
-    cout<<"["<<tren.f<<","<<tren.c<<"]"<<endl;
+    moverTren(tren,velY,velX);
     tren.imagen=IMG_LoadTexture(renderer,imagen);
 
     SDL_RenderCopy(renderer,tren.imagen,NULL,&(tren.rectImag));
@@ -120,4 +121,10 @@ bool compararTren(Tren &tren,Tren &tren2){
         iguales= false;
     }
     return iguales;
+}
+void setDireccionAnterior(Tren &tren, char direccionAnterior[]){
+    strcpy(tren.direccionAnterior,direccionAnterior);
+}
+char* getDireccionAnterior(Tren &tren){
+    return tren.direccionAnterior;
 }

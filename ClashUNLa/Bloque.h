@@ -9,7 +9,7 @@ struct Bloque
     int idBloque;
     int fil;
     int col;
-    bool z;
+    bool ocupado;
     Moneda *moneda;
     //Villano *villano;
     Estacion *estacion;
@@ -19,15 +19,14 @@ struct Bloque
 
 Bloque crearBloque(int id,int fila,int columna);
 void mostrarBloque(Bloque &bloque);
-void eliminarBloque(Bloque &bloque);
-void setMoneda();
-void setVillano();
-void setEstacion(Estacion *estacion,int fil,int col);
-void setMina();
+void destruirBloque(Bloque &bloque);
+void setMoneda(Bloque &bloque,Moneda *moneda);
+//void setVillano(Bloque &bloque,Villano *villano);
+void setEstacion(Bloque &bloque,Estacion *estacion);
+void setMina(Bloque &bloque, Mina &mina);
 Moneda* getMoneda();
-//Villano* getVillano();
 Estacion* getEstacion();
 Mina* getMina();
-
+//Villano* getVillano();
 
 #endif // BLOQUES_H

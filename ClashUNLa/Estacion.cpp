@@ -26,3 +26,19 @@ void dibujarEstacion(Estacion &estacion,SDL_Renderer *renderer){
 void destruirEstacion(Estacion &estacion){
     SDL_DestroyTexture(estacion.imagen);
 }
+
+void setFila(Estacion &estacion,int fil){
+    estacion.f = fil;
+}
+
+int getFila(Estacion &estacion){
+    return estacion.f;
+}
+
+void setColumna(Estacion &estacion,int col){
+    estacion.c = col;
+}
+
+int getColumna(Estacion &estacion){
+    return estacion.c;
+}

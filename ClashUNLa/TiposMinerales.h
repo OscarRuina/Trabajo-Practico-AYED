@@ -3,7 +3,7 @@
 
 
  enum TiposMinerales{
-
+    vacio = 0,
     carbon = 1,
     bronce = 2,
     plata = 3,

@@ -9,29 +9,54 @@
 #include "Mapa.h"
 #include "Tren.h"
 #include "VariablesFijas.h"
+#include "Lista.h"
+#include "FuncionesLista.h"
+
+ResultadoComparacion compararListaTrenes(PtrDato ptrDato1,PtrDato ptrDato2){
+    int dato1 = ((Tren*) ptrDato1)->rectImag.x;
+    int dato2 = ((Tren*) ptrDato2)->rectImag.x ;
+
+    if (dato1 < dato2) {
+        return MENOR;
+    }else if (dato1 > dato2) {
+        return MAYOR;
+    }else{
+        return IGUAL;
+    }
+}
+
 
 using namespace std;
 
 int main(int argc,char *args[])
 {
-    //variables para capear los fps
+    //variables para el manejo de fps
     const int FPS = 120;
     const int frameDelay = 1000/FPS;
-    //variables para bloquear el maximo de FPS.
     int frameStart;
     int frameTime;
+    //variables ventana
     Ventana ventana;
-    Moneda moneda;
-    Tren tren;
-    Estacion estacion;
-    Mapa mapa;
-
     crearVentana(ventana);//creo ventana
-    InicializarVentana(ventana,"ClashUNLa",pos,pos,ancho,alto,SDL_WINDOW_RESIZABLE);//la inicializo
-    crearEstacion(estacion,ventana.p_render);//creo estacion
-    crearMoneda(moneda,ventana.p_render);
+    InicializarVentana(ventana,"ClashUNLa",pos,pos,ancho,alto,SDL_WINDOW_RESIZABLE);
+    //variables para crear mapa
+    Mapa mapa;
     crearMapa(mapa,ventana.p_render);
-    crearTren(tren,"c1");
+
+    //variables tren y lista de trenes
+    Tren* tren = new Tren;
+    crearTren(*tren,"c1");
+    Lista listaTrenes;
+    crearLista(listaTrenes,compararListaTrenes);
+    adicionarPrincipio(listaTrenes,tren);
+    //variable estacion
+    Estacion* estacion = new Estacion;
+    crearEstacion(*estacion,ventana.p_render);
+    //variable moneda
+    Moneda moneda;
+    crearMoneda(moneda,ventana.p_render);
+    setEstacion(mapa.bloques[getFila(*estacion)][getColumna(*estacion)],estacion);
+
 
     bool doOnce = true;
     bool turnoMoneda = true;
@@ -39,26 +64,27 @@ int main(int argc,char *args[])
     int turno = getTurno(ventana);
     while(getRun(ventana)){
 
-
                 renderClear(ventana);
                 dibujarMapa(mapa,ventana.p_render);
                 while(doOnce){
                     renderPresent(ventana);
                     doOnce = false;
                 }
+                if(ciclosRender==0){
+                    ManejarEventos(ventana,*tren);
+                    evaluarColiciones(listaTrenes,ventana,mapa,*tren);
+                }
                 //tomo el tiempo del primer frame
                 frameStart = SDL_GetTicks();
                 dibujarMapa(mapa,ventana.p_render);
-                dibujarEstacion(estacion,ventana.p_render);
+                dibujarEstacion(*estacion,ventana.p_render);
                 dibujarMoneda(moneda,ventana.p_render,turnoMoneda);
-                if(ciclosRender==0){
-                    ManejarEventos(ventana,tren);
-                }
-                dibujarTren(tren,ventana.p_render);
+                renderListaTrenes(listaTrenes,ventana.p_render);
+
+
+
 
                 renderPresent(ventana);
-                evaluarColiciones(ventana,mapa,tren);
-
                 frameTime = SDL_GetTicks() - frameStart;
                 //si lo que tarda es mas rapido de lo necesario para realizar la cantidad de FPS que asigne , realizara un delay
                 if(frameDelay> frameTime){
@@ -67,14 +93,17 @@ int main(int argc,char *args[])
                 ciclosRender++;
                 turnoMoneda= false;
                 if(ciclosRender==40){
+
                     ciclosRender = 0;
                     setTurno(ventana,getTurno(ventana)+1);
+                    setListaDireccionAnterior(listaTrenes);
+                    setListaDireccionTrenes(listaTrenes);
                     turnoMoneda= true;
                 }
 
     }
-    destruirEstacion(estacion);
-    destruirTren(tren);
+    destruirEstacion(*estacion);
+    destruirTren(*tren);
     destruirVentana(ventana);
     return 0;
 }

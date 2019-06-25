@@ -49,4 +49,13 @@ estacion: instancia sobre la cual se invoca la primitiva
 void destruirEstacion(Estacion &estacion);
 /*----------------------------*/
 void cargarVariables(Estacion &estacion);
+
+void setFila(Estacion &estacion,int fil);
+
+int getFila(Estacion &estacion);
+
+
+void setColumna(Estacion &estacion,int col);
+
+int getColumna(Estacion &estacion);
 #endif

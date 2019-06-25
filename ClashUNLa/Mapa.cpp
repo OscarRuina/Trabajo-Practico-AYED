@@ -31,6 +31,7 @@ void dibujarMapa(Mapa &mapa,SDL_Renderer *renderer){
 
 }
 void destruirMapa(Mapa &mapa){
+
     SDL_DestroyTexture(mapa.textura);
 }
 
@@ -43,9 +44,9 @@ void mostrarBloquesMapa(Mapa &mapa){
 }
 
 
-void evaluarColiciones(Ventana &ventana,Mapa &mapa,Tren &tren){
+void evaluarColiciones(Lista &lista,Ventana &ventana,Mapa &mapa,Tren &tren){
     evaluarLimites(ventana,mapa,tren);
-    evaluarGrid(ventana,mapa,tren);
+    evaluarGrid(lista,ventana,mapa,tren);
 }
 
 void evaluarLimites(Ventana &ventana,Mapa &mapa,Tren &tren){
@@ -56,9 +57,14 @@ void evaluarLimites(Ventana &ventana,Mapa &mapa,Tren &tren){
     }
 }
 
-void evaluarGrid(Ventana &ventana,Mapa &mapa,Tren &tren){
-    Bloque blo = mapa.bloques[tren.f][tren.c];
-    if(blo.z){
-        cout<<"COLISION!"<<endl;
+void evaluarGrid(Lista &lista,Ventana &ventana,Mapa &mapa,Tren &tren){
+    Bloque bloque = mapa.bloques[tren.f][tren.c];
+    if(bloque.ocupado){
+        if(bloque.estacion!=NULL){
+            cout<<"Colision estacion"<<endl;
+            Tren* tren = new Tren;
+            crearTren(*tren,"c2");
+            adicionarFinal(lista,tren);
+        }
     }
 }
