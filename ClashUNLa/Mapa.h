@@ -26,5 +26,6 @@ void mostrarBloquesMapa(Mapa &mapa);
 void evaluarColiciones(Lista &lista,Ventana &ventana,Mapa &mapa, Tren &tren);
 void evaluarLimites(Ventana &ventana,Mapa &mapa,Tren &tren);
 void evaluarGrid(Lista &lista,Ventana &ventana,Mapa &mapa,Tren &tren);
+void colisionEstacion(Lista &lista,Tren &tren);
 
 #endif // MAPA_H

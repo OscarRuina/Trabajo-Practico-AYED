@@ -25,6 +25,17 @@ ResultadoComparacion compararListaTrenes(PtrDato ptrDato1,PtrDato ptrDato2){
     }
 }
 
+ResultadoComparacion compararListaMonedas(PtrDato ptrDato1,PtrDato ptrDato2){
+    int dato1 = ((Moneda*)ptrDato1)->rectImg.x+((Moneda*)ptrDato1)->rectImg.y;
+    int dato2 = ((Moneda*)ptrDato2)->rectImg.x+((Moneda*)ptrDato2)->rectImg.y;
+    if (dato1 < dato2) {
+        return MENOR;
+    }else if (dato1 > dato2) {
+        return MAYOR;
+    }else{
+        return IGUAL;
+    }
+}
 
 using namespace std;
 
@@ -45,18 +56,18 @@ int main(int argc,char *args[])
 
     //variables tren y lista de trenes
     Tren* tren = new Tren;
-    crearTren(*tren,"c1");
+    crearTren(*tren,"c1","aba",0,0,0);
+    setMonedas(*tren,10);
     Lista listaTrenes;
     crearLista(listaTrenes,compararListaTrenes);
     adicionarPrincipio(listaTrenes,tren);
     //variable estacion
     Estacion* estacion = new Estacion;
     crearEstacion(*estacion,ventana.p_render);
-    //variable moneda
-    Moneda moneda;
-    crearMoneda(moneda,ventana.p_render);
     setEstacion(mapa.bloques[getFila(*estacion)][getColumna(*estacion)],estacion);
-
+    //variable moneda
+    Lista listaMonedas;
+    crearLista(listaMonedas,compararListaMonedas);
 
     bool doOnce = true;
     bool turnoMoneda = true;
@@ -70,19 +81,21 @@ int main(int argc,char *args[])
                     renderPresent(ventana);
                     doOnce = false;
                 }
+                generarListaMonedas(ventana,listaMonedas,mapa);
                 if(ciclosRender==0){
+                    setListaEstadoAnterior(listaTrenes);
                     ManejarEventos(ventana,*tren);
-                    evaluarColiciones(listaTrenes,ventana,mapa,*tren);
+                    setListaDireccionTrenes(listaTrenes);
                 }
+
+                evaluarLimites(ventana,mapa,*tren);
                 //tomo el tiempo del primer frame
                 frameStart = SDL_GetTicks();
                 dibujarMapa(mapa,ventana.p_render);
                 dibujarEstacion(*estacion,ventana.p_render);
-                dibujarMoneda(moneda,ventana.p_render,turnoMoneda);
                 renderListaTrenes(listaTrenes,ventana.p_render);
-
-
-
+                renderListaMonedas(listaMonedas,ventana.p_render,turnoMoneda);
+                cout<<longitud(listaTrenes)<<endl;
 
                 renderPresent(ventana);
                 frameTime = SDL_GetTicks() - frameStart;
@@ -93,12 +106,10 @@ int main(int argc,char *args[])
                 ciclosRender++;
                 turnoMoneda= false;
                 if(ciclosRender==40){
-
                     ciclosRender = 0;
                     setTurno(ventana,getTurno(ventana)+1);
-                    setListaDireccionAnterior(listaTrenes);
-                    setListaDireccionTrenes(listaTrenes);
                     turnoMoneda= true;
+                    evaluarGrid(listaTrenes,ventana,mapa,*tren);
                 }
 
     }

@@ -60,11 +60,20 @@ void evaluarLimites(Ventana &ventana,Mapa &mapa,Tren &tren){
 void evaluarGrid(Lista &lista,Ventana &ventana,Mapa &mapa,Tren &tren){
     Bloque bloque = mapa.bloques[tren.f][tren.c];
     if(bloque.ocupado){
-        if(bloque.estacion!=NULL){
-            cout<<"Colision estacion"<<endl;
-            Tren* tren = new Tren;
-            crearTren(*tren,"c2");
-            adicionarFinal(lista,tren);
+        if(bloque.estacion!=NULL&&tren.monedas>0){
+           colisionEstacion(lista,tren);
         }
     }
+}
+
+void colisionEstacion(Lista &lista,Tren &tren){
+            cout<<"Colision estacion"<<endl;
+            int kilos = tren.monedas;
+            tren.monedas=0;
+            Tren* trenAux = new Tren;
+            PtrNodoLista aux = ultimo(lista);
+            Tren* trenAnterior = ((Tren*)aux->ptrDato);
+            crearTren(*trenAux,"c2",trenAnterior->anterior.direccionAnterior,trenAnterior->anterior.filaAnterior,trenAnterior->anterior.columnaAnterior,kilos);
+            adicionarFinal(lista,trenAux);
+
 }

@@ -96,6 +96,10 @@ bool ManejarEventos(Ventana &ventana,Tren &tren){
                         seguir = true;
                     }
                 }
+                if(keys[SDL_SCANCODE_ESCAPE]){
+                    seguir=true;
+                    setRun(ventana,false);
+                }
             }
         }
 

@@ -3,20 +3,21 @@
 #include <string.h>
 
 /*Implemtacion de primitivas*/
-void crearTren(Tren &tren,char tipo[],int fil,int col){
+void crearTren(Tren &tren,char tipo[],char direccion[],int fil,int col,int kilos){
     strcpy(tren.tipo,tipo);
-    tren.c =fil;
-    tren.f = col;
+    tren.c =col;
+    tren.f = fil;
     tren.tipoMineral = vacio;
-
-    setDireccion(tren,"aba");
+    tren.monedas = 0;
+    tren.kilos = kilos;
+    setDireccion(tren,direccion);
 
     tren.seguir = false;
     tren.ciclo = 0;
     tren.cicloRender = 0;
 
-    tren.rectImag.x=0;
-    tren.rectImag.y=0;
+    tren.rectImag.x=col*40;
+    tren.rectImag.y=fil*40;
     tren.rectImag.w=40;
     tren.rectImag.h=40;
 
@@ -122,9 +123,27 @@ bool compararTren(Tren &tren,Tren &tren2){
     }
     return iguales;
 }
-void setDireccionAnterior(Tren &tren, char direccionAnterior[]){
-    strcpy(tren.direccionAnterior,direccionAnterior);
+
+
+void setPosicionAnterior(Tren &tren,posicionAnterior anterior){
+    tren.anterior=anterior;
+
 }
-char* getDireccionAnterior(Tren &tren){
-    return tren.direccionAnterior;
+posicionAnterior getPosicionAnterior(Tren &tren){
+    return tren.anterior;
+}
+
+int getMonedas(Tren &tren){
+    return tren.monedas;
+}
+void setMonedas(Tren &tren,int monedas){
+    tren.monedas=monedas;
+}
+
+int getKilos(Tren &tren){
+    return tren.kilos;
+}
+
+void setKilos(Tren &tren,int kilos){
+    tren.kilos=kilos;
 }

@@ -21,12 +21,22 @@ Atributos:
 
 using namespace std;
 
+typedef struct posicionAnterior{
+    char direccionAnterior[4];
+    int filaAnterior;
+    int columnaAnterior;
+};
+
 typedef struct{
     char tipo[3];
     int f;
     int c;
+    int monedas;
     char direccion[4];
-    char direccionAnterior[4];
+    int kilos;
+
+    posicionAnterior anterior;
+
     int cicloRender;
     int ciclo;
     bool seguir;
@@ -48,7 +58,7 @@ altoCasillero: valor alto de la imagen
 altoSprite: valor del sprite
 *renderer: puntero del TDA ventana de tipo renderer
 */
-void crearTren(Tren &tren,char tipo[]);
+void crearTren(Tren &tren,char tipo[],char  direccion[],int fil,int col,int kilos);
 /*----------------------------------*/
 /*
 PRE:tren creado con crear
@@ -134,4 +144,17 @@ int getCicloRender(Tren &tren);
 
 void setDireccionAnterior(Tren &tren, char direccionAnterior[]);
 char* getDireccionAnterior(Tren &tren);
+
+
+void setPosicionAnterior(Tren &tren,posicionAnterior anterior);
+posicionAnterior getPosicionAnterior(Tren &tren);
+
+int getMonedas(Tren &tren);
+void setMonedas(Tren &tren,int monedas);
+
+
+int getKilos(Tren &tren);
+
+void setKilos(Tren &tren,int kilos);
+
 #endif // Tren_h
