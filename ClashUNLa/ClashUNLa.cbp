@@ -32,9 +32,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Bloque.cpp" />
+		<Unit filename="Bloque.h" />
+		<Unit filename="Cajas.cpp" />
+		<Unit filename="Cajas.h" />
+		<Unit filename="Caravana.cpp" />
+		<Unit filename="Caravana.h" />
 		<Unit filename="Estacion.cpp" />
 		<Unit filename="Estacion.h" />
 		<Unit filename="Funciones.h" />
+		<Unit filename="FuncionesLista.cpp" />
+		<Unit filename="FuncionesLista.h" />
+		<Unit filename="Lista.cpp" />
+		<Unit filename="Lista.h" />
 		<Unit filename="ManejoVentana.cpp" />
 		<Unit filename="ManejoVentana.h" />
 		<Unit filename="Mapa.cpp" />

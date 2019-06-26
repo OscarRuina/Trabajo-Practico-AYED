@@ -1,20 +1,88 @@
 # depslib dependency file v1.0
-1557093664 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\main.cpp
-	<iostream>
-	"ManejoVentana.h"
-	"VariablesFijas.h"
-
-1557095721 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\manejoventana.cpp
-	"ManejoVentana.h"
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\bloque.cpp
+	"Bloque.h"
 	<iostream>
 
-1557095549 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\manejoventana.h
-	<SDL.h>
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\bloque.h
+	"Moneda.h"
+	"Estacion.h"
+	"Mina.h"
 
-1557093357 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\clashunla\variablesfijas.h
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.h
 	<SDL.h>
+	<SDL_image.h>
+	<stdlib.h>
 
-1560554215 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.h
+	<SDL.h>
+	<SDL_image.h>
+
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mina.h
+	<SDL.h>
+	<SDL_image.h>
+	"TiposMinerales.h"
+
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tiposminerales.h
+
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\cajas.cpp
+	"Cajas.h"
+
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\cajas.h
+
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\caravana.cpp
+	"Caravana.h"
+
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\caravana.h
+	"Tren.h"
+
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tren.h
+	<SDL.h>
+	<SDL_image.h>
+	<iostream>
+	"TiposMinerales.h"
+
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.cpp
+	"Estacion.h"
+	"Bloque.h"
+	<iostream>
+	<fstream>
+
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\funcioneslista.cpp
+	"FuncionesLista.h"
+	"Tren.h"
+	<SDL.h>
+	"Lista.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"ManejoVentana.h"
+	<iostream>
+	<fstream>
+
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\funcioneslista.h
+	<SDL.h>
+	"Lista.h"
+	"ManejoVentana.h"
+	"Mapa.h"
+
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\lista.h
+
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.h
+	<SDL.h>
+	<SDL_image.h>
+	"Tren.h"
+
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.h
+	<SDL.h>
+	"Bloque.h"
+	"Tren.h"
+	"ManejoVentana.h"
+	"Lista.h"
+
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\lista.cpp
+	"Lista.h"
+
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
 	<iostream>
 	<string.h>
 	<conio.h>
@@ -26,235 +94,38 @@
 	"Mapa.h"
 	"Tren.h"
 	"VariablesFijas.h"
+	"Lista.h"
+	"FuncionesLista.h"
 
-1560554215 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.h
-	<SDL.h>
-	<SDL_image.h>
-	"Tren.h"
-
-1560552735 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\variablesfijas.h
+1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\variablesfijas.h
 	<SDL.h>
 
-1560554215 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
 	"ManejoVentana.h"
 	<iostream>
 	<SDL.h>
 
-1560552735 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.h
-	<SDL.h>
-	<SDL_image.h>
-
-1560552735 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.cpp
-	"Estacion.h"
-
-1560552735 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.h
-	<SDL.h>
-	<SDL_image.h>
-	<stdlib.h>
-
-1560552735 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.h
-	<SDL.h>
-
-1560552735 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.cpp
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.cpp
 	"Mapa.h"
-	<SDL.h>
-	<SDL_image.h>
-
-1560552735 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.cpp
-	"Moneda.h"
-
-1560552735 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tren.cpp
-	"Tren.h"
-	<stdlib.h>
-	<string.h>
-
-1560554215 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tren.h
-	<SDL.h>
-	<SDL_image.h>
-
-1560534596 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\estacion.cpp
-	"Estacion.h"
-
-1560368896 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\estacion.h
-	<SDL.h>
-	<SDL_image.h>
-
-1560549788 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\main.cpp
-	<iostream>
-	<string.h>
-	<conio.h>
-	<stdlib.h>
-	<SDL.h>
-	"ManejoVentana.h"
-	"Estacion.h"
-	"Moneda.h"
-	"Mapa.h"
-	"Tren.h"
-	"VariablesFijas.h"
-
-1560549348 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\manejoventana.h
-	<SDL.h>
-	<SDL_image.h>
-	"Tren.h"
-
-1560550205 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\tren.h
-	<SDL.h>
-	<SDL_image.h>
-
-1560368896 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\moneda.h
-	<SDL.h>
-	<SDL_image.h>
-	<stdlib.h>
-
-1560368896 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\mapa.h
-	<SDL.h>
-
-1560534657 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\variablesfijas.h
-	<SDL.h>
-
-1560549371 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\manejoventana.cpp
-	"ManejoVentana.h"
 	<iostream>
 	<SDL.h>
-
-1560534112 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\mapa.cpp
-	"Mapa.h"
-	<SDL.h>
 	<SDL_image.h>
+	"Bloque.h"
 
-1560368896 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\moneda.cpp
-	"Moneda.h"
-
-1560550529 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\tren.cpp
-	"Tren.h"
-	<stdlib.h>
-	<string.h>
-
-1560532452 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\mina.cpp
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mina.cpp
 	"Mina.h"
 	<SDL.h>
 	<SDL_image.h>
-	"Funciones.h"
 
-1560532175 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\mina.h
-	<SDL.h>
-	<SDL_image.h>
-	"TiposMinerales.h"
-	"Funciones.h"
-
-1560531558 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\tiposminerales.h
-
-1560531847 c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\funciones.h
-	<cstdlib>
-	"time.h"
-
-1560531576 source:c:\users\nico\desktop\materias2019\ayed\tpfinal\clashunla\tiposminerales.cpp
-	"TiposMinerales.h"
-
-1560552735 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\estacion.cpp
-	"Estacion.h"
-
-1560552735 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\estacion.h
-	<SDL.h>
-	<SDL_image.h>
-
-1560552735 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\estacion.cpp
-	"Estacion.h"
-
-1560552735 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\estacion.h
-	<SDL.h>
-	<SDL_image.h>
-
-1560554215 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\main.cpp
-	<iostream>
-	<string.h>
-	<conio.h>
-	<stdlib.h>
-	<SDL.h>
-	"ManejoVentana.h"
-	"Estacion.h"
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.cpp
 	"Moneda.h"
-	"Mapa.h"
-	"Tren.h"
-	"VariablesFijas.h"
-
-1560554215 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\manejoventana.h
-	<SDL.h>
-	<SDL_image.h>
-	"Tren.h"
-
-1560554215 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\tren.h
-	<SDL.h>
-	<SDL_image.h>
-
-1560552735 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\moneda.h
-	<SDL.h>
-	<SDL_image.h>
-	<stdlib.h>
-
-1560552735 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\mapa.h
-	<SDL.h>
-
-1560552735 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\variablesfijas.h
-	<SDL.h>
-
-1560554215 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\manejoventana.cpp
-	"ManejoVentana.h"
 	<iostream>
-	<SDL.h>
 
-1560552735 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\mapa.cpp
-	"Mapa.h"
-	<SDL.h>
-	<SDL_image.h>
-
-1560552735 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\mina.cpp
-	"Mina.h"
-	<SDL.h>
-	<SDL_image.h>
-	"Funciones.h"
-
-1560552735 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\mina.h
-	<SDL.h>
-	<SDL_image.h>
-	"TiposMinerales.h"
-	"Funciones.h"
-
-1560552735 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\tiposminerales.h
-
-1560552735 c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\funciones.h
-	<cstdlib>
-	"time.h"
-
-1560552735 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\moneda.cpp
-	"Moneda.h"
-
-1560552735 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\tiposminerales.cpp
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tiposminerales.cpp
 	"TiposMinerales.h"
 
-1560552735 source:c:\users\usuario\documents\materias sistemas segundo año\algoritmos y estructuras de datos\trabajo-practico-ayed\clashunla\tren.cpp
+1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tren.cpp
 	"Tren.h"
 	<stdlib.h>
 	<string.h>
-
-1560552735 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mina.cpp
-	"Mina.h"
-	<SDL.h>
-	<SDL_image.h>
-	"Funciones.h"
-
-1560552735 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mina.h
-	<SDL.h>
-	<SDL_image.h>
-	"TiposMinerales.h"
-	"Funciones.h"
-
-1560552735 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tiposminerales.h
-
-1560552735 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\funciones.h
-	<cstdlib>
-	"time.h"
-
-1560552735 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tiposminerales.cpp
-	"TiposMinerales.h"
 
