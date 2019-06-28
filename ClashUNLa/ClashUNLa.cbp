@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Bandido.cpp" />
+		<Unit filename="Bandido.h" />
 		<Unit filename="Bloque.cpp" />
 		<Unit filename="Bloque.h" />
 		<Unit filename="Cajas.cpp" />
