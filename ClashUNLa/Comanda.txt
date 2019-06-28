@@ -1,0 +1,6 @@
+oro;25
+plata;30
+bronce;40
+platino;20
+roca;35
+carbon;45
