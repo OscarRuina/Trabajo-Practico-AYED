@@ -10,7 +10,7 @@ void setListaDireccionTrenes(Lista &lista);
 void setListaEstadoAnterior(Lista &lista);
 void generarListaMonedas(Ventana &ventana,Lista &lista,Mapa &mapa);
 void renderListaMonedas(Lista &lista,SDL_Renderer* renderer,bool turnoMoneda);
-
-
-
+void mostrarDirecciones(Lista &lista);
+void setFCListaTrenes(Lista &lista);
+void verificarColisionVagones(Ventana &ventana,Lista &lista,Tren &tren);
 #endif // FUNCIONESLISTA_H

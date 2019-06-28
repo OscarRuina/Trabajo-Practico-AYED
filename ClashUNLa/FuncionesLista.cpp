@@ -21,7 +21,22 @@ void renderListaTrenes(Lista &lista,SDL_Renderer *renderer){
     }
 }
 
+void setFCListaTrenes(Lista &lista){
+    PtrNodoLista cursor;
+    PtrNodoLista aux;
+    cursor = primero(lista);
+    while(cursor!=finLista()){
+        Tren* tren = (Tren*)cursor->ptrDato;
+        if(cursor!=primero(lista)){
+            aux = anterior(lista,cursor);
+            Tren* trenAux = (Tren*) aux->ptrDato;
+            tren->c= trenAux->anterior.columnaAnterior;
+            tren->f= trenAux->anterior.filaAnterior;
 
+        }
+        cursor=siguiente(lista,cursor);
+    }
+}
 
 void setListaEstadoAnterior(Lista &lista){
     PtrNodoLista cursor;
@@ -29,15 +44,13 @@ void setListaEstadoAnterior(Lista &lista){
     while(cursor!=finLista()){
         Tren* tren = (Tren*)cursor->ptrDato;
         posicionAnterior posAnterior;
-        posAnterior.filaAnterior=getFila(*tren);
-        posAnterior.columnaAnterior=getColumna(*tren);
+        posAnterior.columnaAnterior=tren->c;
+        posAnterior.filaAnterior=tren->f;
         strcpy(posAnterior.direccionAnterior,getDireccion(*tren));
-        setPosicionAnterior(*tren,posAnterior);
+        tren->anterior=posAnterior;
         cursor = siguiente(lista,cursor);
-
     }
 }
-
 
 void setListaDireccionTrenes(Lista &lista){
     PtrNodoLista cursor;
@@ -66,7 +79,6 @@ void generarListaMonedas(Ventana &ventana,Lista &lista,Mapa &mapa){
         crearMoneda(*moneda,ventana.p_render);
         adicionarFinal(lista,moneda);
     }
-
 }
 
 void renderListaMonedas(Lista &lista,SDL_Renderer *renderer,bool turnoMoneda){
@@ -77,5 +89,29 @@ void renderListaMonedas(Lista &lista,SDL_Renderer *renderer,bool turnoMoneda){
         dibujarMoneda(*moneda,renderer,turnoMoneda);
         cursor=siguiente(lista,cursor);
     }
+}
 
+
+void mostrarDirecciones(Lista &lista){
+ PtrNodoLista cursor;
+    cursor = primero(lista);
+    while(cursor!=finLista()){
+        Tren * tren = (Tren*)cursor->ptrDato;
+        mostrarTrenFC(*tren);
+        cursor = siguiente(lista,cursor);
+        }
+}
+
+void verificarColisionVagones(Ventana &ventana,Lista &lista,Tren &tren){
+    PtrNodoLista cursor;
+    cursor = siguiente(lista,primero(lista));
+    while(cursor!=finLista()){
+        Tren* trenAux = (Tren*)cursor->ptrDato;
+        if(compararFilaColumna(tren,*trenAux)){
+            cout<<"Choco con otro vagon"<<endl;
+            setRun(ventana,false);
+        }
+        cursor=siguiente(lista,cursor);
+
+    }
 }

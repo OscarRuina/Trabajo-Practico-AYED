@@ -1,5 +1,6 @@
 #include "Moneda.h"
 #include <iostream>
+#include <time.h>
 using namespace std;
 
 void crearMoneda(Moneda &moneda,SDL_Renderer* renderer){
@@ -39,8 +40,9 @@ void updateMoneda(Moneda &moneda){
 
 
 int generarNumeroRandom(int minimo,int maximo){
+    srand(time(NULL));
     return (rand() % ((maximo - minimo) + 1) + minimo);
-    }
+}
 
 void destruirMoneda(Moneda &moneda){
     SDL_DestroyTexture(moneda.textura);

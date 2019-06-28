@@ -10,11 +10,11 @@ void crearTren(Tren &tren,char tipo[],char direccion[],int fil,int col,int kilos
     tren.tipoMineral = vacio;
     tren.monedas = 0;
     tren.kilos = kilos;
+    tren.anterior.columnaAnterior=0;
+    tren.anterior.filaAnterior=-1;
     setDireccion(tren,direccion);
 
-    tren.seguir = false;
     tren.ciclo = 0;
-    tren.cicloRender = 0;
 
     tren.rectImag.x=col*40;
     tren.rectImag.y=fil*40;
@@ -25,15 +25,14 @@ void crearTren(Tren &tren,char tipo[],char direccion[],int fil,int col,int kilos
 
 
 void dibujarTren(Tren &tren,SDL_Renderer* renderer){
-    int cicloRender = getCicloRender(tren);
     int ciclo = getCiclo(tren);
+
     char imagen[30] = "img/";
     strcat(imagen,tren.tipo);strcat(imagen,"/");
     strcat(imagen,tren.direccion);strcat(imagen,"/");
     char cadenaIntervalo[5];
     itoa(ciclo,cadenaIntervalo,10);
     strcat(imagen,cadenaIntervalo);strcat(imagen,".png");
-
 
     //evaluamos los desplazamientos
     int velY=0;
@@ -44,15 +43,15 @@ void dibujarTren(Tren &tren,SDL_Renderer* renderer){
     if(!verificarDireccion(tren,"izq"))velY=-1;
 
     moverTren(tren,velY,velX);
+
+
     tren.imagen=IMG_LoadTexture(renderer,imagen);
 
     SDL_RenderCopy(renderer,tren.imagen,NULL,&(tren.rectImag));
     ciclo++;
-    cicloRender++;
     setCiclo(tren,ciclo);
-    setCicloRender(tren,cicloRender);
     if(ciclo==9){
-        setCiclo(tren,0);
+        setCiclo(tren,1);
     }
 
 }
@@ -61,13 +60,33 @@ bool verificarDireccion(Tren &tren,char direc[]){
     return strcmp(tren.direccion,direc);
 }
 
-void moverTren(Tren &tren, int velX,int velY){
 
+void moverTren(Tren &tren, int velX,int velY){
     tren.rectImag.x=tren.rectImag.x+velX;
     tren.rectImag.y=tren.rectImag.y+velY;
+
+
     tren.rectImag.w=40;//70
     tren.rectImag.h=40  ;//70
 }
+
+void cambiarFilaColumna(Tren &tren){
+    if(!verificarDireccion(tren,"aba")){
+        tren.f = tren.f+1;
+    }
+    else if(!verificarDireccion(tren,"arr")){
+        tren.f = tren.f-1;
+    }
+
+    else if(!verificarDireccion(tren,"der")){
+        tren.c = tren.c+1;
+    }
+
+    else if(!verificarDireccion(tren,"izq")){
+        tren.c = tren.c-1;
+    }
+}
+
 void destruirTren(Tren &tren){
     SDL_DestroyTexture(tren.imagen);
 }
@@ -99,12 +118,9 @@ void setFila(Tren &tren,int fil){
 int getFila(Tren &tren){
     return tren.f;
 }
-void setCicloRender(Tren &tren,int cicloRender){
-    tren.cicloRender=cicloRender;
-}
-int getCicloRender(Tren &tren){
-    return tren.cicloRender;
-}
+
+
+
 
 bool verificarTipo(Tren &tren,char tipo[]){
     return strcmp(tren.direccion,tipo);
@@ -146,4 +162,14 @@ int getKilos(Tren &tren){
 
 void setKilos(Tren &tren,int kilos){
     tren.kilos=kilos;
+}
+
+
+void mostrarTrenFC(Tren &tren){
+    cout<<tren.anterior.columnaAnterior<<"-"<<tren.anterior.filaAnterior<<endl;
+
+}
+
+bool compararFilaColumna(Tren &este,Tren &otro){
+    return((getColumna(este)==getColumna(otro))&&(getFila(este)==getFila(otro)));
 }

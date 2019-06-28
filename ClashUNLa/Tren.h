@@ -37,9 +37,8 @@ typedef struct{
 
     posicionAnterior anterior;
 
-    int cicloRender;
     int ciclo;
-    bool seguir;
+
     TiposMinerales tipoMineral;
 
 	SDL_Texture *imagen;
@@ -105,7 +104,7 @@ tren instancia sobre la que actua la primitiva
 renderer puntero del render en ventana
 intervalo
 */
-void moverTren(Tren &tren, int desplazamientoHorizontal,int desplazamientoVertical);
+void moverTren(Tren &tren, int velX,int velY);
 /*----------------------------------*/
 bool verificarTipo(Tren &tren,char[]);
 bool verificarDireccion(Tren &tren,char direc[]);
@@ -139,8 +138,7 @@ bool compararTren(Tren &tren,Tren &tren2);
 void setCiclo(Tren &tren,int ciclo);
 int getCiclo(Tren &tren);
 
-void setCicloRender(Tren &tren,int ciclo);
-int getCicloRender(Tren &tren);
+
 
 void setDireccionAnterior(Tren &tren, char direccionAnterior[]);
 char* getDireccionAnterior(Tren &tren);
@@ -154,7 +152,15 @@ void setMonedas(Tren &tren,int monedas);
 
 
 int getKilos(Tren &tren);
-
 void setKilos(Tren &tren,int kilos);
 
+
+void setCicloCambioFC(Tren &tren,int cicloCambioFC);
+
+int getCicloCambioFC(Tren &tren);
+void cambiarFilaColumna(Tren &tren);
+
+
+void mostrarTrenFC(Tren &tren);
+bool compararFilaColumna(Tren &este,Tren &otro);
 #endif // Tren_h
