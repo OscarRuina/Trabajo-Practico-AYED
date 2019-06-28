@@ -9,6 +9,7 @@ typedef struct
     int fil;
     int col;
     int vidaUtil;
+    bool activa;
     SDL_Rect rectImg;
     SDL_Texture *textura;
 

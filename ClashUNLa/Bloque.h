@@ -4,6 +4,7 @@
 #include "Estacion.h"
 #include "Mina.h"
 
+
 struct Bloque
 {
     int idBloque;
@@ -27,6 +28,7 @@ void setMina(Bloque &bloque, Mina &mina);
 Moneda* getMoneda();
 Estacion* getEstacion();
 Mina* getMina();
+void liberarBloque(Bloque &bloque);
 //Villano* getVillano();
 
 #endif // BLOQUES_H

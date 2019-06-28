@@ -65,6 +65,9 @@ void evaluarGrid(Lista &lista,Ventana &ventana,Mapa &mapa,Tren &tren){
                 if(bloque.estacion!=NULL&&tren.monedas>0){
                     colisionEstacion(lista,tren);
                 }
+                if(bloque.moneda!=NULL){
+                    colisionMoneda(lista,tren,bloque);
+                }
             }
 
     }
@@ -80,4 +83,10 @@ void colisionEstacion(Lista &lista,Tren &tren){
     crearTren(*trenAux,"c2",trenAnterior->anterior.direccionAnterior,trenAnterior->anterior.filaAnterior,trenAnterior->anterior.columnaAnterior,kilos);
     adicionarFinal(lista,trenAux);
 
+}
+
+void colisionMoneda(Lista &lista,Tren &tren,Bloque &bloque){
+    setMonedas(tren,getMonedas(tren)+1);
+    bloque.moneda->activa=false;
+    liberarBloque(bloque);
 }

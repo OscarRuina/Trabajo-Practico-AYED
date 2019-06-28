@@ -4,6 +4,7 @@
 
 struct Caja{
     int cant;
+    int usadas;
 };
 
 void crearCajas(Caja &caja);

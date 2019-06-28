@@ -21,7 +21,7 @@ Atributos:
 
 using namespace std;
 
-typedef struct posicionAnterior{
+struct posicionAnterior{
     char direccionAnterior[4];
     int filaAnterior;
     int columnaAnterior;

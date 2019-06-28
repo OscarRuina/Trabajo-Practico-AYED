@@ -23,6 +23,10 @@ void setEstacion(Bloque &bloque,Estacion *estacion){
     bloque.ocupado = true;
 
 }
+void setMoneda(Bloque &bloque,Moneda *moneda){
+    bloque.moneda=moneda;
+    bloque.ocupado=true;
+}
 
 void mostrarBloque(Bloque &bloque){
     cout<<"Id: "<<bloque.idBloque<<endl;
@@ -33,5 +37,11 @@ void mostrarBloque(Bloque &bloque){
 
 void destruirBloque(Bloque &bloque){
 
+}
+void liberarBloque(Bloque &bloque){
+    bloque.estacion=NULL;
+    bloque.mina=NULL;
+    bloque.moneda=NULL;
+    bloque.ocupado = false;
 }
 

@@ -70,14 +70,15 @@ void setListaDireccionTrenes(Lista &lista){
 
 void generarListaMonedas(Ventana &ventana,Lista &lista,Mapa &mapa){
     ifstream fin("Moneda.txt");
-
     int cantMonedas;
     fin>>cantMonedas;
     //cout<<cantMonedas;
-    while(longitud(lista)<cantMonedas){
+    if(longitud(lista)<cantMonedas){
         Moneda *moneda = new Moneda;
         crearMoneda(*moneda,ventana.p_render);
+        setMoneda(mapa.bloques[moneda->fil][moneda->col],moneda);
         adicionarFinal(lista,moneda);
+
     }
 }
 
@@ -91,6 +92,28 @@ void renderListaMonedas(Lista &lista,SDL_Renderer *renderer,bool turnoMoneda){
     }
 }
 
+void mostrarMonedas(Lista &lista){
+    PtrNodoLista cursor;
+    cursor = primero(lista);
+    while(cursor!=finLista()){
+        Moneda* moneda = (Moneda*)cursor->ptrDato;
+        cout<<moneda->activa<<endl;
+        cursor=siguiente(lista,cursor);
+    }
+}
+void verificarEstadoListaMonedas(Lista &lista,Mapa &mapa){
+    PtrNodoLista cursor;
+    cursor = primero(lista);
+    while(cursor!=finLista()){
+        Moneda* moneda = (Moneda*)cursor->ptrDato;
+        if(moneda->activa==0){
+            liberarBloque(mapa.bloques[moneda->fil][moneda->col]);
+            eliminarNodo(lista,cursor);
+        }
+        cursor=siguiente(lista,cursor);
+    }
+    reordenar(lista);
+}
 
 void mostrarDirecciones(Lista &lista){
  PtrNodoLista cursor;

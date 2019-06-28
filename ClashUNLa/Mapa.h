@@ -27,5 +27,6 @@ void evaluarColiciones(Lista &lista,Ventana &ventana,Mapa &mapa, Tren &tren);
 void evaluarLimites(Ventana &ventana,Mapa &mapa,Tren &tren);
 void evaluarGrid(Lista &lista,Ventana &ventana,Mapa &mapa,Tren &tren);
 void colisionEstacion(Lista &lista,Tren &tren);
+void colisionMoneda(Lista &lista,Tren &tren,Bloque &bloque);
 
 #endif // MAPA_H
