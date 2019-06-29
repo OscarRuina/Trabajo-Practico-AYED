@@ -37,7 +37,7 @@ run dato ingresado
 */
 /*---------------------------------*/
 /*
-PRE: ventana no debe haber sido creada
+PRE: ventana debe haber sido creada
 POST: atributo turno de ventana seteado
 ventana: instancia sobre la cual se invoca la primitiva
 turno: valor que se va a setear
@@ -45,14 +45,14 @@ turno: valor que se va a setear
 void setTurno(Ventana &ventana,int turno);
 /*---------------------------------*/
 /*
-PRE: ventana no debe haber sido creada
+PRE: ventana debe haber sido creada
 POST: valor del turno devuelto
 ventana: instancia sobre la cual se invoca la primitiva
 */
 int getTurno(Ventana &ventana);
 /*---------------------------------*/
 /*
-PRE: ventana no debe haber sido creada
+PRE: ventana debe haber sido creada
 POST: atributo run seteado
 ventana: instancia sobre la cual se invoca la primitiva
 run: valor a setear
