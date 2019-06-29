@@ -48,14 +48,40 @@ estacion: instancia sobre la cual se invoca la primitiva
 */
 void destruirEstacion(Estacion &estacion);
 /*----------------------------*/
+/*
+PRE: estacion creada con crear
+POST: variables de estacion cargadas
+estacion: instancia sobre la cual se invoca la primitiva
+*/
 void cargarVariables(Estacion &estacion);
-
+/*----------------------------*/
+/*
+PRE: estacion creada con crear
+POST: variable fila seteada
+estacion: instancia sobre la cual se invoca la primitiva
+fil : valor a setear
+*/
 void setFila(Estacion &estacion,int fil);
-
+/*----------------------------*/
+/*
+PRE: estacion creada con crear
+POST: valor de la fila devuelto
+estacion: instancia sobre la cual se invoca la primitiva
+*/
 int getFila(Estacion &estacion);
-
-
+/*----------------------------*/
+/*
+PRE: estacion creada con crear
+POST: columna seteado con un nuevo valor
+estacion: instancia sobre la cual se invoca la primitiva
+col: valor a setear
+*/
 void setColumna(Estacion &estacion,int col);
-
+/*----------------------------*/
+/*
+PRE: estacion creada con crear
+POST: valor de la columna devuelto
+estacion: instancia sobre la cual se invoca la primitiva
+*/
 int getColumna(Estacion &estacion);
 #endif

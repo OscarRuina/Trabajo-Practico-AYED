@@ -12,15 +12,15 @@ Atributos:
  int f ---> fila,coordenada de y
  int c ---> columna,coordenada de x
  char direccion[4] ---> direccion de la imagen,der,izq,aba,arr
- int anchoCasillero ---> ancho de la imagen
- int altoCasillero ---> alto imagen
+ int monedas ---> numero de monedas
+ int kilos ---> numero de kilos
  int altoSprite ---> alto del sprite
  *imagen ---> puntero a imagen
  rectImagen ---> variable para dibujar la imagen
 */
 
 using namespace std;
-
+/* tipo de dato para saber la posicion del tren*/
 struct posicionAnterior{
     char direccionAnterior[4];
     int filaAnterior;
@@ -107,13 +107,14 @@ intervalo
 void moverTren(Tren &tren, int velX,int velY);
 /*----------------------------------*/
 bool verificarTipo(Tren &tren,char[]);
+/*----------------------------------*/
 bool verificarDireccion(Tren &tren,char direc[]);
+/*----------------------------------*/
 /*
 PRE: tren creado con crear
 POST: tren borrado de la ventana
 tren instancia sobre la cual actua la primitiva
 */
-
 void destruirTren(Tren &tren);
 /*----------------------------------*/
 /*
@@ -131,36 +132,121 @@ char direccion nuevo valor a setear
 */
 void setDireccion(Tren &tren,char direccion[]);
 /*----------------------------------*/
-
+/*
+PRE: tren creado con crear
+POST: compara dos trenes
+tren instancia sobre la cual actua la primitiva
+*/
 bool compararTren(Tren &tren,Tren &tren2);
-
-
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: setea el atributo ciclo
+tren instancia sobre la cual actua la primitiva
+ciclo: atributo a setear
+*/
 void setCiclo(Tren &tren,int ciclo);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: devuelve el dato ciclo
+tren instancia sobre la cual actua la primitiva
+*/
 int getCiclo(Tren &tren);
-
-
-
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: setea el dato direccion anterior
+tren instancia sobre la cual actua la primitiva
+direccionAnterior: dato a setear
+*/
 void setDireccionAnterior(Tren &tren, char direccionAnterior[]);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: devuelve el dato direccion anterior
+tren instancia sobre la cual actua la primitiva
+*/
 char* getDireccionAnterior(Tren &tren);
-
-
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: setea el dato posicion anterior
+tren instancia sobre la cual actua la primitiva
+anterior: estructura a setear
+*/
 void setPosicionAnterior(Tren &tren,posicionAnterior anterior);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: devuelve el dato posicion anterior
+tren instancia sobre la cual actua la primitiva
+*/
 posicionAnterior getPosicionAnterior(Tren &tren);
-
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: devuelve el dato moneda
+tren instancia sobre la cual actua la primitiva
+*/
 int getMonedas(Tren &tren);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: setea el dato moneda
+tren instancia sobre la cual actua la primitiva
+monedas: dato a setear
+*/
 void setMonedas(Tren &tren,int monedas);
-
-
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: devuelve el dato kilos
+tren instancia sobre la cual actua la primitiva
+*/
 int getKilos(Tren &tren);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: seteado el dato kilos
+tren instancia sobre la cual actua la primitiva
+kilos: dato a setear
+*/
 void setKilos(Tren &tren,int kilos);
-
-
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: seteado el ciclo cambio
+tren instancia sobre la cual actua la primitiva
+cicloCambioFC: dato a setear
+*/
 void setCicloCambioFC(Tren &tren,int cicloCambioFC);
-
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: devuelve el dato ciclo cambio
+tren instancia sobre la cual actua la primitiva
+*/
 int getCicloCambioFC(Tren &tren);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: modifica la fila y columna
+tren instancia sobre la cual actua la primitiva
+*/
 void cambiarFilaColumna(Tren &tren);
-
-
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: muestra el ciclo de cambio
+tren instancia sobre la cual actua la primitiva
+*/
 void mostrarTrenFC(Tren &tren);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: true si las fila y columna son iguales,false sino lo son
+tren instancia sobre la cual actua la primitiva
+*/
 bool compararFilaColumna(Tren &este,Tren &otro);
 #endif // Tren_h
