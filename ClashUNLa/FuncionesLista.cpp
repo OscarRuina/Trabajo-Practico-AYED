@@ -147,9 +147,15 @@ void verificarColisionVagones(Ventana &ventana,Lista &lista,Tren &tren){
 }
 
 void generarListaMinas(Ventana &ventana,Mapa &mapa,Lista &lista){
-    for(int i = 1;i<6;i++){
+    ifstream fin("Minas.txt");
+    int fil;
+    int col;
+    int tipo;
+    int extra;
+    while(!fin.eof()){
+        fin>>fil>>col>>tipo>>extra;
         Mina *mina = new Mina;
-        crearMina(*mina,ventana.p_render,i);
+        crearMina(*mina,ventana.p_render,fil,col,tipo);
         setMina(mapa.bloques[mina->fil][mina->col],mina);
         if(longitud(lista)==0){
             adicionarPrincipio(lista,mina);
@@ -157,9 +163,7 @@ void generarListaMinas(Ventana &ventana,Mapa &mapa,Lista &lista){
         else{
             adicionarFinal(lista,mina);
         }
-
     }
-
 }
 
 
