@@ -18,7 +18,7 @@ struct Mina{
     int fil;
     int col;
     TiposMinerales tipo;
-    int cajas[5];
+    int cajas[5] ={2,2,4,3,5};
     SDL_Rect rectImg;
     SDL_Texture *imagen;
 };
@@ -30,7 +30,7 @@ mina:instancia sobre la que actua la primitiva
 renderer:puntero de tipo renderer
 tipo: tipo de mineral
 */
-void crearMina(Mina &mina,SDL_Renderer *renderer,int tipo);
+void crearMina(Mina &mina,SDL_Renderer *renderer,int fil,int col,int tipo);
 /*------------------------------*/
 /*
 PRE: mina debe haber sido creada

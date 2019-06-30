@@ -7,9 +7,9 @@
 
 using namespace std;
 
-void crearMina(Mina &mina,SDL_Renderer *renderer,int tipo){
-    mina.fil = generarNumeroRandom(0,14);
-    mina.col = generarNumeroRandom(0,19);
+void crearMina(Mina &mina,SDL_Renderer *renderer,int fil,int col,int tipo){
+    mina.fil = fil;
+    mina.col = col;
     mina.tipo= traerTipo(tipo);
     cargarCajas(mina);
     mina.imagen = IMG_LoadTexture(renderer,"img/mina.png");
@@ -17,10 +17,12 @@ void crearMina(Mina &mina,SDL_Renderer *renderer,int tipo){
 }
 
 void cargarCajas(Mina &mina){
-    ifstream fin("Minas.txt");
+
+    //mina.cajas[] = ;
+  /*  ifstream fin("Minas.txt");
     for(int i = 0;i < 5;i++){
         fin>>mina.cajas[i];
-    }
+    }*/
 }
 
 
