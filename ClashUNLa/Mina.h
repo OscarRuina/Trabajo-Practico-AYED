@@ -5,17 +5,16 @@
 #include "TiposMinerales.h"
 
 struct Mina{
-    int ancho;
-    int largo;
-    int numeroCasillero;
+    int fil;
+    int col;
     TiposMinerales tipo;
     int cajas[5];
-    SDL_Rect destino;
-    SDL_Texture *textura;
+    SDL_Rect rectImg;
+    SDL_Texture *imagen;
 };
 
-void crearMina(Mina &mina,SDL_Renderer *renderer);
-void generarPosicion(Mina &mina);
-void crearCajas(Mina &mina);
+void crearMina(Mina &mina,SDL_Renderer *renderer,int tipo);
+void cargarCajas(Mina &mina);
 void eliminarMina(Mina &mina);
+void dibujarMina(Mina &mina,SDL_Renderer *renderer);
 #endif // MINA_H

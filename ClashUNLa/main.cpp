@@ -25,6 +25,16 @@ ResultadoComparacion compararListaTrenes(PtrDato ptrDato1,PtrDato ptrDato2){
     }
 }
 
+
+ResultadoComparacion compararListaMinas(PtrDato ptrDato1,PtrDato ptrDato2){
+    TiposMinerales dato1 = ((Mina*)ptrDato1)->tipo;
+    TiposMinerales dato2 = ((Mina*)ptrDato2)->tipo;
+    if(CompararMinerales(dato1,dato2)==0){
+        return IGUAL;
+    }
+    return MENOR;
+}
+
 ResultadoComparacion compararListaMonedas(PtrDato ptrDato1,PtrDato ptrDato2){
     int dato1 = ((Moneda*)ptrDato1)->rectImg.x+((Moneda*)ptrDato1)->rectImg.y;
     int dato2 = ((Moneda*)ptrDato2)->rectImg.x+((Moneda*)ptrDato2)->rectImg.y;
@@ -61,11 +71,14 @@ int main(int argc,char *args[])
     Lista listaTrenes;
     crearLista(listaTrenes,compararListaTrenes);
     adicionarPrincipio(listaTrenes,tren);
-
     //variable estacion
     Estacion* estacion = new Estacion;
     crearEstacion(*estacion,ventana.p_render);
     setEstacion(mapa.bloques[getFila(*estacion)][getColumna(*estacion)],estacion);
+    //variable minas
+    Lista listaMinas;
+    crearLista(listaMinas,compararListaMinas);
+    generarListaMinas(ventana,mapa,listaMinas);
     //variable moneda
     Lista listaMonedas;
     crearLista(listaMonedas,compararListaMonedas);
@@ -89,7 +102,7 @@ int main(int argc,char *args[])
 
                 }
                 if(ciclosRender==0){
-                    cout<<tren->monedas<<endl;
+                    cout<<tren->f<<"."<<tren->c<<endl;
                     evaluarGrid(listaTrenes,ventana,mapa,*tren);
                     setListaEstadoAnterior(listaTrenes);
                     setFCListaTrenes(listaTrenes);
@@ -102,8 +115,9 @@ int main(int argc,char *args[])
                 evaluarLimites(ventana,mapa,*tren);
                 dibujarMapa(mapa,ventana.p_render);
                 dibujarEstacion(*estacion,ventana.p_render);
-                renderListaTrenes(listaTrenes,ventana.p_render);
+                renderListaMinas(listaMinas,ventana.p_render);
                 renderListaMonedas(listaMonedas,ventana.p_render,turnoMoneda);
+                renderListaTrenes(listaTrenes,ventana.p_render);
 
 
                 renderPresent(ventana);

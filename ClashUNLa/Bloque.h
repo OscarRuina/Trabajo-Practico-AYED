@@ -72,7 +72,7 @@ POST: seteada la mina
 bloque: instancia sobre la actua la primitiva
 mina: puntero a setear
 */
-void setMina(Bloque &bloque, Mina &mina);
+void setMina(Bloque &bloque, Mina *mina);
 /*--------------------------------*/
 /*
 PRE: bloque debe haber sido creado

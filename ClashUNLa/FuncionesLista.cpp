@@ -1,5 +1,6 @@
 #include "FuncionesLista.h"
 #include "Tren.h"
+#include "Mina.h"
 #include <SDL.h>
 #include "Lista.h"
 #include <stdlib.h>
@@ -75,13 +76,16 @@ void generarListaMonedas(Ventana &ventana,Lista &lista,Mapa &mapa){
     //cout<<cantMonedas;
     if(longitud(lista)<cantMonedas){
         Moneda *moneda = new Moneda;
-        crearMoneda(*moneda,ventana.p_render);
-        setMoneda(mapa.bloques[moneda->fil][moneda->col],moneda);
-        adicionarFinal(lista,moneda);
 
+        crearMoneda(*moneda,ventana.p_render);
+        if(!mapa.bloques[moneda->fil][moneda->col].ocupado){
+
+            setMoneda(mapa.bloques[moneda->fil][moneda->col],moneda);
+            adicionarFinal(lista,moneda);
+        }
     }
 }
-
+//dibuja la lista de monedas
 void renderListaMonedas(Lista &lista,SDL_Renderer *renderer,bool turnoMoneda){
     PtrNodoLista cursor;
     cursor = primero(lista);
@@ -101,6 +105,10 @@ void mostrarMonedas(Lista &lista){
         cursor=siguiente(lista,cursor);
     }
 }
+
+
+//si el tren choco con la moneda o su vida util llega a su fin, el estado sera puesto en falso ,
+//luego verifico su estado y si es falso , elimina la moneda ylo saco d ela lista
 void verificarEstadoListaMonedas(Lista &lista,Mapa &mapa){
     PtrNodoLista cursor;
     cursor = primero(lista);
@@ -135,6 +143,32 @@ void verificarColisionVagones(Ventana &ventana,Lista &lista,Tren &tren){
             setRun(ventana,false);
         }
         cursor=siguiente(lista,cursor);
+    }
+}
 
+void generarListaMinas(Ventana &ventana,Mapa &mapa,Lista &lista){
+    for(int i = 1;i<6;i++){
+        Mina *mina = new Mina;
+        crearMina(*mina,ventana.p_render,i);
+        setMina(mapa.bloques[mina->fil][mina->col],mina);
+        if(longitud(lista)==0){
+            adicionarPrincipio(lista,mina);
+        }
+        else{
+            adicionarFinal(lista,mina);
+        }
+
+    }
+
+}
+
+
+void renderListaMinas(Lista &lista,SDL_Renderer *renderer){
+    PtrNodoLista cursor;
+    cursor = primero(lista);
+    while(cursor!=finLista()){
+        Mina* mina= (Mina*) cursor->ptrDato;
+        dibujarMina(*mina,renderer);
+        cursor=siguiente(lista,cursor);
     }
 }

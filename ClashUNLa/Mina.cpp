@@ -1,22 +1,37 @@
 #include "Mina.h"
 #include <SDL.h>
 #include <SDL_image.h>
+#include "Moneda.h"
+#include <iostream>
+#include <fstream>
 
-void crearMina(Mina &mina,SDL_Renderer *renderer){
-    mina.ancho =40;
-    mina.largo =40;
-    mina.textura = IMG_LoadTexture(renderer,"img/mina.png");
+using namespace std;
 
-    mina.destino.h=40;
-    mina.destino.w=40;
-    mina.destino.x=0;
-    mina.destino.y=0;
+void crearMina(Mina &mina,SDL_Renderer *renderer,int tipo){
+    mina.fil = generarNumeroRandom(0,14);
+    mina.col = generarNumeroRandom(0,19);
+    mina.tipo= traerTipo(tipo);
+    cargarCajas(mina);
+    mina.imagen = IMG_LoadTexture(renderer,"img/mina.png");
 
 }
 
-void generarPosicion(Mina &mina);
-void crearCajas(Mina &mina){
+void cargarCajas(Mina &mina){
+    ifstream fin("Minas.txt");
+    for(int i = 0;i < 5;i++){
+        fin>>mina.cajas[i];
+    }
+}
 
+
+
+void dibujarMina(Mina &mina,SDL_Renderer* renderer){
+
+    mina.rectImg.x = mina.col*40;
+    mina.rectImg.y = mina.fil*40;
+    mina.rectImg.w = 40;
+    mina.rectImg.h = 40;
+    SDL_RenderCopy(renderer,mina.imagen,NULL,&(mina.rectImg));
 
 }
 void eliminarMina(Mina &mina);

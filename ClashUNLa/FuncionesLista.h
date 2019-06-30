@@ -24,5 +24,6 @@ void verificarColisionVagones(Ventana &ventana,Lista &lista,Tren &tren);
 //verifica el estado de las monedas , si es falso , lo saca de la lista
 void verificarEstadoListaMonedas(Lista &lista,Mapa &mapa);
 void mostrarMonedas(Lista &lista);
-
+void generarListaMinas(Ventana &ventana,Mapa &mapa,Lista &lista);
+void renderListaMinas(Lista &lista,SDL_Renderer *renderer);
 #endif // FUNCIONESLISTA_H

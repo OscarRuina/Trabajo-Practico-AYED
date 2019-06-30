@@ -14,4 +14,6 @@
 
 bool CompararMinerales(TiposMinerales tipo1,TiposMinerales tipo2);
 
+TiposMinerales traerTipo(int n);
+
 #endif // TIPOSMINERALES_H

@@ -35,6 +35,11 @@ void mostrarBloque(Bloque &bloque){
 
 }
 
+void setMina(Bloque &bloque, Mina *mina){
+    bloque.mina=mina;
+    bloque.ocupado=true;
+}
+
 void destruirBloque(Bloque &bloque){
 
 }
