@@ -79,21 +79,21 @@ PRE: bloque debe haber sido creado
 POST: retorna la moneda
 bloque: instancia sobre la actua la primitiva
 */
-Moneda* getMoneda();
+Moneda* getMoneda(Bloque &bloque);
 /*--------------------------------*/
 /*
 PRE: bloque debe haber sido creado
 POST: retorna la estacion
 bloque: instancia sobre la actua la primitiva
 */
-Estacion* getEstacion();
+Estacion* getEstacion(Bloque &bloque);
 /*--------------------------------*/
 /*
 PRE: bloque debe haber sido creado
 POST:
 bloque: instancia sobre la actua la primitiva
 */
-Mina* getMina();
+Mina* getMina(Bloque &bloque);
 /*--------------------------------*/
 /*
 PRE: bloque debe haber sido creado

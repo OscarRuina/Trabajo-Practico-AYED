@@ -10,6 +10,7 @@ void crearTren(Tren &tren,char tipo[],char direccion[],int fil,int col,int kilos
     tren.tipoMineral = vacio;
     tren.monedas = 0;
     tren.kilos = kilos;
+    tren.kilosOcupados = 0;
     tren.anterior.columnaAnterior=0;
     tren.anterior.filaAnterior=-1;
     setDireccion(tren,direccion);
@@ -172,4 +173,22 @@ void mostrarTrenFC(Tren &tren){
 
 bool compararFilaColumna(Tren &este,Tren &otro){
     return((getColumna(este)==getColumna(otro))&&(getFila(este)==getFila(otro)));
+}
+
+TiposMinerales getTipoMineral(Tren &tren){
+    return tren.tipoMineral;
+}
+void setTipoMineral(Tren &tren,TiposMinerales tipo){
+    tren.tipoMineral=tipo;
+}
+
+int getKilosOcupados(Tren &tren){
+    return tren.kilosOcupados;
+}
+void setKilosOcupados(Tren &tren,int kilos){
+    tren.kilosOcupados=kilos;
+}
+
+void mostrarKilos(Tren &tren){
+    cout<<"["<<tren.kilos<<"-"<<tren.kilosOcupados<<"]"<<"- Mineral:"<<tren.tipoMineral<<endl;
 }

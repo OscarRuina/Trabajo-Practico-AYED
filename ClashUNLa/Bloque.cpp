@@ -34,6 +34,9 @@ void mostrarBloque(Bloque &bloque){
     cout<<"Fila: "<<bloque.fil<<endl;
 
 }
+Mina* getMina(Bloque &bloque){
+    return bloque.mina;
+}
 
 void setMina(Bloque &bloque, Mina *mina){
     bloque.mina=mina;

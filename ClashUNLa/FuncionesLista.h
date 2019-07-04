@@ -24,10 +24,10 @@ void verificarColisionVagones(Ventana &ventana,Lista &lista,Tren &tren);
 //verifica el estado de las monedas , si es falso , lo saca de la lista
 void verificarEstadoListaMonedas(Lista &lista,Mapa &mapa);
 void mostrarMonedas(Lista &lista);
+void generarListaMinas(Ventana &ventana,Mapa &mapa,Lista &lista);
+void renderListaMinas(Lista &lista,SDL_Renderer *renderer);
+void mostrarKilosLista(Lista &lista);
+void mostrarMineralesLista(Lista &lista);
+void updateListaMinas(Lista &lista);
 
-
-void generarListaMinas(Ventana &ventana,Mapa &mapa, Lista &lista);
-void renderListaMinas(Lista &lista, SDL_Renderer *renderer);
-
-void renderBandidos(Bandido &bandido,SDL_Renderer *renderer,Mapa &mapa);
 #endif // FUNCIONESLISTA_H

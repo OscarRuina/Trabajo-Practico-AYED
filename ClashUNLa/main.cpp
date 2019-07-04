@@ -11,7 +11,6 @@
 #include "VariablesFijas.h"
 #include "Lista.h"
 #include "FuncionesLista.h"
-#include "Mina.h"
 
 ResultadoComparacion compararListaTrenes(PtrDato ptrDato1,PtrDato ptrDato2){
     int dato1 = ((Tren*) ptrDato1)->rectImag.x;
@@ -26,18 +25,15 @@ ResultadoComparacion compararListaTrenes(PtrDato ptrDato1,PtrDato ptrDato2){
     }
 }
 
-/*ResultadoComparacion compararListaBandidos(PtrDato ptrDato1, PtrDato ptrDato2){
-    int dato1 = ((Bandido*)ptrDato1)->rectImagen.x;
-    int dato2 = ((Bandido*)ptrDato2)->rectImagen.x;
-    if (dato1 < dato2) {
-        return MENOR;
-    }else if (dato1 > dato2) {
-        return MAYOR;
-    }else{
+
+ResultadoComparacion compararListaMinas(PtrDato ptrDato1,PtrDato ptrDato2){
+    TiposMinerales dato1 = ((Mina*)ptrDato1)->tipo;
+    TiposMinerales dato2 = ((Mina*)ptrDato2)->tipo;
+    if(CompararMinerales(dato1,dato2)==0){
         return IGUAL;
     }
-
-}*/
+    return MENOR;
+}
 
 ResultadoComparacion compararListaMonedas(PtrDato ptrDato1,PtrDato ptrDato2){
     int dato1 = ((Moneda*)ptrDato1)->rectImg.x+((Moneda*)ptrDato1)->rectImg.y;
@@ -49,14 +45,6 @@ ResultadoComparacion compararListaMonedas(PtrDato ptrDato1,PtrDato ptrDato2){
     }else{
         return IGUAL;
     }
-}
-ResultadoComparacion compararListaMinas(PtrDato ptrDato1,PtrDato ptrDato2){
-    TiposMinerales dato1 = ((Mina*)ptrDato1)->tipo;
-    TiposMinerales dato2 = ((Mina*)ptrDato2)->tipo;
-    if(CompararMinerales(dato1,dato2)==0){
-        return IGUAL;
-    }
-    return MENOR;
 }
 
 using namespace std;
@@ -83,31 +71,21 @@ int main(int argc,char *args[])
     Lista listaTrenes;
     crearLista(listaTrenes,compararListaTrenes);
     adicionarPrincipio(listaTrenes,tren);
-
     //variable estacion
     Estacion* estacion = new Estacion;
     crearEstacion(*estacion,ventana.p_render);
     setEstacion(mapa.bloques[getFila(*estacion)][getColumna(*estacion)],estacion);
+    //variable minas
+    Lista listaMinas;
+    crearLista(listaMinas,compararListaMinas);
+    generarListaMinas(ventana,mapa,listaMinas);
     //variable moneda
     Lista listaMonedas;
     crearLista(listaMonedas,compararListaMonedas);
 
-
-    Bandido *bandido = new Bandido;
-    //crearBandido(*bandido,ventana.p_render);
-    //setBandido(mapa.bloques[getFila(*bandido)][getColumna(*bandido)],bandido);
-
-
-
-    Lista listaMinas;
-    crearLista(listaMinas,compararListaMinas);
-    generarListaMinas(ventana,mapa,listaMinas);
-
     bool doOnce = true;
     bool turnoMoneda = true;
     int generarMonedas = 0;
-
-
     int ciclosRender = 0;
 
 
@@ -121,10 +99,10 @@ int main(int argc,char *args[])
                 while(doOnce){
                     renderPresent(ventana);
                     doOnce = false;
-
+                    //mostrarMineralesLista(listaMinas);
                 }
                 if(ciclosRender==0){
-                    cout<<tren->monedas<<endl;
+                    mostrarKilosLista(listaTrenes);
                     evaluarGrid(listaTrenes,ventana,mapa,*tren);
                     setListaEstadoAnterior(listaTrenes);
                     setFCListaTrenes(listaTrenes);
@@ -137,14 +115,9 @@ int main(int argc,char *args[])
                 evaluarLimites(ventana,mapa,*tren);
                 dibujarMapa(mapa,ventana.p_render);
                 dibujarEstacion(*estacion,ventana.p_render);
-
-
-
-                renderBandidos(*bandido,ventana.p_render,mapa);
-                renderListaTrenes(listaTrenes,ventana.p_render);
                 renderListaMinas(listaMinas,ventana.p_render);
                 renderListaMonedas(listaMonedas,ventana.p_render,turnoMoneda);
-
+                renderListaTrenes(listaTrenes,ventana.p_render);
 
 
                 renderPresent(ventana);
@@ -153,37 +126,25 @@ int main(int argc,char *args[])
                 if(frameDelay> frameTime){
                     SDL_Delay(frameDelay - frameTime);
                 }
-
                 ciclosRender++;
-
-
                 generarMonedas++;
                 turnoMoneda=false;
-
-
-
-                if(ciclosRender==40){
-
+                if(ciclosRender==anchoCasillero){
                     verificarEstadoListaMonedas(listaMonedas,mapa);
                     verificarColisionVagones(ventana,listaTrenes,*tren);
                     ciclosRender = 0;
                     setTurno(ventana,getTurno(ventana)+1);
                     turnoMoneda=true;
+                    updateListaMinas(listaMinas);
                 }
-
                 if(generarMonedas==120){
                     generarListaMonedas(ventana,listaMonedas,mapa);
                     generarMonedas=0;
                 }
 
-
-
-
-
     }
     eliminarLista(listaTrenes);
     eliminarLista(listaMonedas);
-
     destruirEstacion(*estacion);
     destruirTren(*tren);
     destruirVentana(ventana);

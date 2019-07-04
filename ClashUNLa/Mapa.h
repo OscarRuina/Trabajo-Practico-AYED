@@ -93,4 +93,13 @@ POST: evalua la colision del tren con la moneda
 lista,tren,bloque:instancias sobre la que actua la primitiva
 */
 void colisionMoneda(Lista &lista,Tren &tren,Bloque &bloque);
+
+/*
+PRE: mapa  debe haber sido creado
+POST: evalua la colision del tren con las minas
+tren,lista:instancias sobre la que actua la primitiva
+*/
+void colisionMina(Lista &lista,Tren &tren,Bloque &bloque);
+/*-------------------------------*/
+
 #endif // MAPA_H

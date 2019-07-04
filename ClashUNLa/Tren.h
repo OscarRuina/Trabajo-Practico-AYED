@@ -34,6 +34,7 @@ typedef struct{
     int monedas;
     char direccion[4];
     int kilos;
+    int kilosOcupados;
 
     posicionAnterior anterior;
 
@@ -249,4 +250,10 @@ POST: true si las fila y columna son iguales,false sino lo son
 tren instancia sobre la cual actua la primitiva
 */
 bool compararFilaColumna(Tren &este,Tren &otro);
+int getKilosOcupados(Tren &tren);
+void setKilosOcupados(Tren &tren,int kilos);
+
+TiposMinerales getTipoMineral(Tren &tren);
+void setTipoMineral(Tren &tren,TiposMinerales tipo);
+void mostrarKilos(Tren &tren);
 #endif // Tren_h

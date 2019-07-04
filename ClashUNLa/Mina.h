@@ -18,6 +18,11 @@ struct Mina{
     int fil;
     int col;
     TiposMinerales tipo;
+    int cicloEntrega;
+
+    int cicloIntervalo;
+    int intervalo;
+    int cajasDisponibles;
     int cajas[5] ={2,2,4,3,5};
     SDL_Rect rectImg;
     SDL_Texture *imagen;
@@ -30,14 +35,14 @@ mina:instancia sobre la que actua la primitiva
 renderer:puntero de tipo renderer
 tipo: tipo de mineral
 */
-void crearMina(Mina &mina,SDL_Renderer *renderer,int fil,int col,int tipo);
+void crearMina(Mina &mina,SDL_Renderer *renderer,int fil,int col,int tipo,int intervalo);
 /*------------------------------*/
 /*
 PRE: mina debe haber sido creada
-POST: caja creada
+POST: caja entregada
 mina: instancia sobre la que actua la primitiva
 */
-void cargarCajas(Mina &mina);
+int entregarCaja(Mina &mina);
 /*------------------------------*/
 /*
 PRE: mina debe haber sido creada
@@ -52,4 +57,21 @@ POST: mina dibujada en el mapa
 mina: instancia sobre la que actua la primitiva
 */
 void dibujarMina(Mina &mina,SDL_Renderer *renderer);
+
+int getCicloEntrega(Mina &mina);
+void setCicloEntrega(Mina &mina, int ciclo);
+void resetearCajasMina(Mina &mina);
+void setTipoMineral(Mina &mina,TiposMinerales tipo);
+TiposMinerales getTipoMineral(Mina &mina);
+void mostrarTipoMina(Mina &mina);
+void setIntervalo(Mina &mina,int intervalo);
+int getIntervalo(Mina &mina);
+
+void setCicloIntervalo(Mina &mina,int intervalo);
+int getCicloIntervalo(Mina &mina);
+
+void setCajasDisponibles(Mina &mina,int cajasDisponibles);
+int getCajasDisponibles(Mina &mina);
+
+void updateMina(Mina &mina);
 #endif // MINA_H
