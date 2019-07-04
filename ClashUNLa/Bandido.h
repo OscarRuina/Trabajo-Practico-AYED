@@ -1,6 +1,7 @@
 #ifndef Bandido_h
 #define Bandido_h
 #include <SDL.h>
+
 /*Definicion del tipo de datos para el manejo de bandido*/
 /*
 Atributos:
@@ -12,6 +13,9 @@ rectImagen: SDL_Rect para menejo de rectangulos
 typedef struct{
   int f;
   int c;
+  int intervaloBandido;
+  int vidaBandido;
+  bool activo;
   SDL_Texture *imagen;
   SDL_Rect rectImagen;
 }Bandido;
@@ -28,7 +32,7 @@ PRE: bandido creado con crear
 POST: bandido dibujado en la pantalla
 bandido: instancia sobre la cual actua la primitiva
 */
-void dibujarBandido(Bandido &bandido,SDL_Renderer *renderer);
+void dibujarBandido(Bandido &bandido,SDL_Renderer *renderer, bool turnoBandido);
 /*-------------------------------*/
 /*
 PRE: bandido creado con crear
@@ -73,4 +77,11 @@ POST: retorna la columna
 bandido: instancia sobre la cual actua la primitiva
 */
 int getColumna(Bandido &bandido);
+
+
+
+void crearBandido(Bandido &bandido,SDL_Renderer *renderer,int posX, int posY, int vida);
+
+int generarNumeroRandomB(int minimo,int maximo);
+
 #endif // Bandido_h

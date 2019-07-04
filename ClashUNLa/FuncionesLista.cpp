@@ -1,12 +1,12 @@
 #include "FuncionesLista.h"
 #include "Tren.h"
-#include "Mina.h"
 #include <SDL.h>
 #include "Lista.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include "ManejoVentana.h"
+#include "Bandido.h"
 #include <iostream>
 #include <fstream>
 
@@ -76,16 +76,13 @@ void generarListaMonedas(Ventana &ventana,Lista &lista,Mapa &mapa){
     //cout<<cantMonedas;
     if(longitud(lista)<cantMonedas){
         Moneda *moneda = new Moneda;
-
         crearMoneda(*moneda,ventana.p_render);
-        if(!mapa.bloques[moneda->fil][moneda->col].ocupado){
+        setMoneda(mapa.bloques[moneda->fil][moneda->col],moneda);
+        adicionarFinal(lista,moneda);
 
-            setMoneda(mapa.bloques[moneda->fil][moneda->col],moneda);
-            adicionarFinal(lista,moneda);
-        }
     }
 }
-//dibuja la lista de monedas
+
 void renderListaMonedas(Lista &lista,SDL_Renderer *renderer,bool turnoMoneda){
     PtrNodoLista cursor;
     cursor = primero(lista);
@@ -105,10 +102,6 @@ void mostrarMonedas(Lista &lista){
         cursor=siguiente(lista,cursor);
     }
 }
-
-
-//si el tren choco con la moneda o su vida util llega a su fin, el estado sera puesto en falso ,
-//luego verifico su estado y si es falso , elimina la moneda ylo saco d ela lista
 void verificarEstadoListaMonedas(Lista &lista,Mapa &mapa){
     PtrNodoLista cursor;
     cursor = primero(lista);
@@ -143,36 +136,69 @@ void verificarColisionVagones(Ventana &ventana,Lista &lista,Tren &tren){
             setRun(ventana,false);
         }
         cursor=siguiente(lista,cursor);
+
     }
 }
 
-void generarListaMinas(Ventana &ventana,Mapa &mapa,Lista &lista){
+
+
+void renderBandidos(Bandido &bandido,SDL_Renderer *renderer,Mapa &mapa){
+
+        int vida = 0;
+        int posX = bandido.f;
+        int posY = bandido.c;
+
+        vida = bandido.vidaBandido;
+
+
+
+        if(vida!=0){
+
+            dibujarBandido(bandido,renderer,NULL);
+
+            bandido.vidaBandido--;
+
+
+        }else if(vida==0){
+
+        destruirBandido(bandido);
+        crearBandido(bandido,renderer,generarNumeroRandomB(1,40),generarNumeroRandom(1,40),500);
+
+        }
+
+    }
+
+
+void generarListaMinas(Ventana &ventana, Mapa &mapa, Lista &lista){
     ifstream fin("Minas.txt");
     int fil;
     int col;
     int tipo;
     int extra;
     while(!fin.eof()){
+
         fin>>fil>>col>>tipo>>extra;
         Mina *mina = new Mina;
         crearMina(*mina,ventana.p_render,fil,col,tipo);
-        setMina(mapa.bloques[mina->fil][mina->col],mina);
+        setMina(mapa.bloques[getFil(*mina)][getCol(*mina)],mina);
         if(longitud(lista)==0){
             adicionarPrincipio(lista,mina);
-        }
-        else{
+        }else{
             adicionarFinal(lista,mina);
         }
+
     }
 }
 
+void renderListaMinas(Lista &lista, SDL_Renderer *renderer){
+    PtrNodoLista nodo;
+    nodo = primero(lista);
+    while(nodo!=finLista()){
+        Mina *mina = (Mina*)nodo->ptrDato;
+        dibujarMina(*mina, renderer);
 
-void renderListaMinas(Lista &lista,SDL_Renderer *renderer){
-    PtrNodoLista cursor;
-    cursor = primero(lista);
-    while(cursor!=finLista()){
-        Mina* mina= (Mina*) cursor->ptrDato;
-        dibujarMina(*mina,renderer);
-        cursor=siguiente(lista,cursor);
+        nodo = siguiente(lista,nodo);
     }
+
 }
+
