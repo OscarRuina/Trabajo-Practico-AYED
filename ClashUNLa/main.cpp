@@ -11,6 +11,7 @@
 #include "VariablesFijas.h"
 #include "Lista.h"
 #include "FuncionesLista.h"
+#include "Comanda.h"
 
 ResultadoComparacion compararListaTrenes(PtrDato ptrDato1,PtrDato ptrDato2){
     int dato1 = ((Tren*) ptrDato1)->rectImag.x;
@@ -63,7 +64,6 @@ int main(int argc,char *args[])
     //variables para crear mapa
     Mapa mapa;
     crearMapa(mapa,ventana.p_render);
-
     //variables tren y lista de trenes
     Tren* tren = new Tren;
     crearTren(*tren,"c1","aba",0,0,0);
@@ -82,7 +82,13 @@ int main(int argc,char *args[])
     //variable moneda
     Lista listaMonedas;
     crearLista(listaMonedas,compararListaMonedas);
-
+    //variable bandido
+    Lista listaBandidos;
+   // crearLista(listaBandidos)
+    //variable comanda
+    Comanda *comanda;
+    crearComanda(*comanda);
+    mostrarComanda(*comanda);
     bool doOnce = true;
     bool turnoMoneda = true;
     int generarMonedas = 0;
@@ -132,10 +138,14 @@ int main(int argc,char *args[])
                 if(ciclosRender==anchoCasillero){
                     verificarEstadoListaMonedas(listaMonedas,mapa);
                     verificarColisionVagones(ventana,listaTrenes,*tren);
-                    ciclosRender = 0;
                     setTurno(ventana,getTurno(ventana)+1);
                     turnoMoneda=true;
                     updateListaMinas(listaMinas);
+                    ciclosRender = 0;
+                    if(verificarComanda(listaTrenes,*comanda)){
+                            cout<<"GANO!!"<<endl;
+                            setRun(ventana,false);
+                       }
                 }
                 if(generarMonedas==120){
                     generarListaMonedas(ventana,listaMonedas,mapa);
@@ -143,6 +153,7 @@ int main(int argc,char *args[])
                 }
 
     }
+    eliminarLista(listaMinas);
     eliminarLista(listaTrenes);
     eliminarLista(listaMonedas);
     destruirEstacion(*estacion);

@@ -116,9 +116,6 @@ void colisionMina(Lista &lista,Tren &tren,Bloque &bloque){
                 encontrado = true;
 
             }
-            else{
-                resetearCajasMina(*mina);
-            }
         }
     cursor=siguiente(lista,cursor);
     }
@@ -140,13 +137,11 @@ void colisionMina(Lista &lista,Tren &tren,Bloque &bloque){
                 setKilosOcupados(*trenAux2,getKilosOcupados(*trenAux2)+caja);
                 encontrado = true;
             }
-            else{
-                resetearCajasMina(*mina);
-            }
             terminado = true;
         }
     cursor2=siguiente(lista,cursor2);
     }
+
     }
     else{
         resetearCajasMina(*mina);

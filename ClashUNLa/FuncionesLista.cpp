@@ -136,7 +136,6 @@ void mostrarMonedas(Lista &lista){
     cursor = primero(lista);
     while(cursor!=finLista()){
         Moneda* moneda = (Moneda*)cursor->ptrDato;
-        cout<<moneda->activa<<endl;
         cursor=siguiente(lista,cursor);
     }
 }
@@ -210,3 +209,50 @@ void updateListaMinas(Lista &lista){
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////
+int verificarCantidadDeMinerales(Lista &lista,TiposMinerales mineral){
+    int cantidad = 0;
+    PtrNodoLista cursor;
+    cursor = siguiente(lista,primero(lista));
+    while(cursor!=finLista()){
+        Tren *tren = new Tren;
+        tren = (Tren*)cursor->ptrDato;
+        if(CompararMinerales(mineral,getTipoMineral(*tren))){
+            cantidad+=getKilosOcupados(*tren);
+        }
+        cursor=siguiente(lista,cursor);
+    }
+    return cantidad;
+}
+
+
+//verifica que la cantidad de minerales en todos los trenes sea la solicitada por la comadna.
+bool verificarComanda(Lista &lista,Comanda &comanda){
+    bool estado = true;
+    int cantCarbon,cantBronce,cantPlata,cantOro,cantPlatino;
+
+
+    cantCarbon=verificarCantidadDeMinerales(lista,carbon);
+    cantBronce=verificarCantidadDeMinerales(lista,bronce);
+    cantPlata=verificarCantidadDeMinerales(lista,plata);
+    cantOro=verificarCantidadDeMinerales(lista,oro);
+    cantPlatino=verificarCantidadDeMinerales(lista,platino);
+
+    cout<< cantCarbon<<"-"<<cantBronce <<"-"<<cantPlata <<"-"<<cantOro <<"-"<< cantPlatino<<endl;
+    if(cantCarbon<getCantidadCarbon(comanda)){
+        estado = false;
+    }
+    if(cantBronce<getCantidadBronce(comanda)){
+        estado = false;
+    }
+    if(cantPlata<getCantidadPlata(comanda)){
+        estado = false;
+    }
+    if(cantOro<getCantidadOro(comanda)){
+        estado = false;
+    }
+    if(cantPlatino<getCantidadPlatino(comanda)){
+       estado = false;
+       }
+    return estado ;
+
+}
