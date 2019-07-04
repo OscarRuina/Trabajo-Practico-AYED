@@ -91,8 +91,3 @@ int generarNumeroRandomB(int minimo,int maximo){
 
     return (minimo+rand()%rango);
 }
-
-
-
-
-
