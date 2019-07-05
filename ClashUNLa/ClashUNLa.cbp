@@ -40,6 +40,10 @@
 		<Unit filename="Cajas.h" />
 		<Unit filename="Caravana.cpp" />
 		<Unit filename="Caravana.h" />
+		<Unit filename="Colisiones.cpp" />
+		<Unit filename="Colisiones.h" />
+		<Unit filename="Comanda.cpp" />
+		<Unit filename="Comanda.h" />
 		<Unit filename="Estacion.cpp" />
 		<Unit filename="Estacion.h" />
 		<Unit filename="Funciones.h" />
@@ -55,6 +59,7 @@
 		<Unit filename="Mina.h" />
 		<Unit filename="Moneda.cpp" />
 		<Unit filename="Moneda.h" />
+		<Unit filename="Tablero.h" />
 		<Unit filename="TiposMinerales.cpp" />
 		<Unit filename="TiposMinerales.h" />
 		<Unit filename="Tren.cpp" />

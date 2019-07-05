@@ -44,7 +44,19 @@ POST: limites evaluados
 mapa,ventana,tren:instancias sobre la que actua la primitiva
 */
 void evaluarLimites(Ventana &ventana,Mapa &mapa,Tren &tren);
-
+/*-------------------------------*/
+/*
+PRE: mapa  debe haber sido creado
+POST: colision del bandido
+lista,ventana,tren,bloque:instancias sobre la que actua la primitiva
+*/
 void colisionBandido(Lista &lista,Tren &tren,Bloque &bloque ,Ventana &ventana);
+/*-------------------------------*/
+/*
+PRE: mapa  debe haber sido creado
+POST: borra las caravanas del tren o la cantidad juntada
+mapa,ventana:instancias sobre la que actua la primitiva
+tipo,cantidad:tipo de mineral,cantidad a robar
+*/
 void robarTrenes(Lista &lista,Bloque &bloque,TiposMinerales tipo,int cantidad,Ventana &ventana);
 #endif // COLISIONES_H

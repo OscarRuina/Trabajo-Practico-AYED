@@ -3,7 +3,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
-
+/*definicion del tipo de datos*/
+/*estructura tablero*/
 struct tablero{
     int fil;
     int col;

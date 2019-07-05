@@ -80,12 +80,49 @@ POST: retorna la columna
 bandido: instancia sobre la cual actua la primitiva
 */
 int getColumna(Bandido &bandido);
-
-
+/*-------------------------------*/
+/*
+PRE: bandido creado con crear
+POST: retorna el valor de la cantidad
+bandido: instancia sobre la cual actua la primitiva
+*/
 int getCantidadRobo(Bandido &bandido);
+/*-------------------------------*/
+/*
+PRE: bandido creado con crear
+POST: setea la cantidad
+bandido: instancia sobre la cual actua la primitiva
+cant: valor a setear
+*/
 void setCantidadRobo(Bandido &bandido,int cant);
+/*-------------------------------*/
+/*
+PRE: bandido creado con crear
+POST: retorna el ciclo
+bandido: instancia sobre la cual actua la primitiva
+*/
 int getCicloBandido(Bandido &bandido);
+/*-------------------------------*/
+/*
+PRE: bandido creado con crear
+POST: seteado el ciclo
+bandido: instancia sobre la cual actua la primitiva
+ciclo: valor a setear
+*/
 void setCicloBandido(Bandido &bandido,int ciclo);
+/*-------------------------------*/
+/*
+PRE: bandido creado con crear
+POST: retorna el booleano activo
+bandido: instancia sobre la cual actua la primitiva
+*/
 bool getActivo(Bandido &bandido);
+/*-------------------------------*/
+/*
+PRE: bandido creado con crear
+POST: seteado el valor activo
+bandido: instancia sobre la cual actua la primitiva
+activo: valor a setear
+*/
 void setActivo(Bandido &bandido,bool activo);
 #endif // Bandido_h

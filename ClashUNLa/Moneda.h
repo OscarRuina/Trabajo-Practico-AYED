@@ -54,6 +54,10 @@ POST: devuelve un numero
 minimo,maximo: valores minimo y maximo del numero a generar
 */
 int generarNumeroRandom(int minimo,int maximo);
-
+/*------------------------------*/
+/*
+PRE: moneda  debe haber sido creada
+POST: devuelve el intervalo de la moneda
+*/
 int setIntervaloMoneda();
 #endif // MONEDA_H

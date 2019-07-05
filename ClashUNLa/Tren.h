@@ -250,10 +250,41 @@ POST: true si las fila y columna son iguales,false sino lo son
 tren instancia sobre la cual actua la primitiva
 */
 bool compararFilaColumna(Tren &este,Tren &otro);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: retorna los kilos
+tren instancia sobre la cual actua la primitiva
+*/
 int getKilosOcupados(Tren &tren);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: setea los kilos
+tren instancia sobre la cual actua la primitiva
+kilos: valor a setear
+*/
 void setKilosOcupados(Tren &tren,int kilos);
-
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: retorna los tipos minerales
+tren instancia sobre la cual actua la primitiva
+*/
 TiposMinerales getTipoMineral(Tren &tren);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: setea el tipo mineral
+tren instancia sobre la cual actua la primitiva
+tipo: valor a setear
+*/
 void setTipoMineral(Tren &tren,TiposMinerales tipo);
+/*----------------------------------*/
+/*
+PRE: tren creado con crear
+POST: muestra los kilos
+tren instancia sobre la cual actua la primitiva
+*/
 void mostrarKilos(Tren &tren);
 #endif // Tren_h

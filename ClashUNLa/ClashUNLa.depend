@@ -1,33 +1,34 @@
 # depslib dependency file v1.0
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\bloque.cpp
+1562291114 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\bloque.cpp
 	"Bloque.h"
 	<iostream>
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\bloque.h
+1562335763 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\bloque.h
 	"Moneda.h"
 	"Estacion.h"
 	"Mina.h"
+	"Bandido.h"
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.h
+1562337228 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.h
 	<SDL.h>
 	<SDL_image.h>
 	<stdlib.h>
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.h
+1561840323 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\estacion.h
 	<SDL.h>
 	<SDL_image.h>
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mina.h
+1562337165 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mina.h
 	<SDL.h>
 	<SDL_image.h>
 	"TiposMinerales.h"
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tiposminerales.h
+1561914042 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tiposminerales.h
 
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\cajas.cpp
+1561739757 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\cajas.cpp
 	"Cajas.h"
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\cajas.h
+1561912524 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\cajas.h
 
 1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\caravana.cpp
 	"Caravana.h"
@@ -35,7 +36,7 @@
 1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\caravana.h
 	"Tren.h"
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tren.h
+1562337416 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tren.h
 	<SDL.h>
 	<SDL_image.h>
 	<iostream>
@@ -47,9 +48,10 @@
 	<iostream>
 	<fstream>
 
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\funcioneslista.cpp
+1562291114 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\funcioneslista.cpp
 	"FuncionesLista.h"
 	"Tren.h"
+	"Mina.h"
 	<SDL.h>
 	"Lista.h"
 	<stdlib.h>
@@ -59,20 +61,21 @@
 	<iostream>
 	<fstream>
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\funcioneslista.h
+1562291114 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\funcioneslista.h
 	<SDL.h>
 	"Lista.h"
 	"ManejoVentana.h"
 	"Mapa.h"
+	"Comanda.h"
 
 1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\lista.h
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.h
+1562336725 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.h
 	<SDL.h>
 	<SDL_image.h>
 	"Tren.h"
 
-1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.h
+1562291114 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.h
 	<SDL.h>
 	"Bloque.h"
 	"Tren.h"
@@ -82,7 +85,7 @@
 1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\lista.cpp
 	"Lista.h"
 
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
+1562291114 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\main.cpp
 	<iostream>
 	<string.h>
 	<conio.h>
@@ -96,36 +99,83 @@
 	"VariablesFijas.h"
 	"Lista.h"
 	"FuncionesLista.h"
+	"Comanda.h"
+	"Bandido.h"
+	"Colisiones.h"
 
 1561565797 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\variablesfijas.h
 	<SDL.h>
 
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
+1562291114 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\manejoventana.cpp
 	"ManejoVentana.h"
 	<iostream>
 	<SDL.h>
 
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.cpp
+1562291114 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mapa.cpp
 	"Mapa.h"
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	"Bloque.h"
+	"Colisiones.h"
 
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mina.cpp
+1562291114 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\mina.cpp
 	"Mina.h"
 	<SDL.h>
 	<SDL_image.h>
-
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.cpp
 	"Moneda.h"
 	<iostream>
+	<fstream>
 
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tiposminerales.cpp
+1562291114 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\moneda.cpp
+	"Moneda.h"
+	<iostream>
+	<time.h>
+	"FuncionesLista.h"
+	<iostream>
+	<fstream>
+
+1561912068 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tiposminerales.cpp
 	"TiposMinerales.h"
 
-1561565797 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tren.cpp
+1562252727 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\tren.cpp
 	"Tren.h"
 	<stdlib.h>
 	<string.h>
+
+1562291114 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\bandido.cpp
+	"Bandido.h"
+	"Bloque.h"
+	<iostream>
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"Mapa.h"
+	<string.h>
+
+1562335525 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\bandido.h
+	<SDL.h>
+
+1562336588 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\comanda.h
+	<SDL.h>
+
+1562273535 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\comanda.cpp
+	"Comanda.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1562291114 source:c:\users\usuario\documents\trabajo-practico-ayed\clashunla\colisiones.cpp
+	"Colisiones.h"
+	"ManejoVentana.h"
+
+1562335961 c:\users\usuario\documents\trabajo-practico-ayed\clashunla\colisiones.h
+	"Lista.h"
+	"Mapa.h"
+	"Tren.h"
+	"Moneda.h"
+	"Bandido.h"
+	"Bloque.h"
 

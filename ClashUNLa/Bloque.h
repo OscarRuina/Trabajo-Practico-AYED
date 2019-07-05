@@ -103,9 +103,25 @@ bloque: instancia sobre la actua la primitiva
 */
 void liberarBloque(Bloque &bloque);
 /*--------------------------------*/
-
-
+/*
+PRE: bloque debe haber sido creado
+POST: retorna la instancia del bandido
+bloque: instancia sobre la actua la primitiva
+*/
 Bandido* getBandido(Bloque &bloque);
+/*--------------------------------*/
+/*
+PRE: bloque debe haber sido creado
+POST: setea la instancia del bandido
+bloque: instancia sobre la actua la primitiva
+bandido: puntero de tipo bandido que se va a setear
+*/
 void setBandido(Bloque &bloque,Bandido *bandido);
+/*--------------------------------*/
+/*
+PRE: bloque debe haber sido creado
+POST: libera el bloque con un bandido
+bloque: instancia sobre la actua la primitiva
+*/
 void liberarBloqueBandido(Bloque &bloque);
 #endif // BLOQUES_H

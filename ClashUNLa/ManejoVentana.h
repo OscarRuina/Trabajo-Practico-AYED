@@ -109,10 +109,19 @@ ventana:instancia sobre la cual se invoca la primitiva
 */
 void destruirVentana(Ventana &ventana);
 /*----------------------------------*/
-
-
+/*
+PRE: ventana creada con crear
+POST: retorna el ciclo
+ventana: instancia sobre la que actua la primitiva
+*/
 int getCiclo(Ventana &ventana);
-
+/*----------------------------------*/
+/*
+PRE: ventana creada con crear
+POST: seteado el ciclo
+ventana: instancia sobre la que actua la primitiva
+ciclo: valor a setear
+*/
 void setCiclo(Ventana &ventana,int ciclo);
 
 #endif // ManejoVentana_h
