@@ -62,7 +62,8 @@ void evaluarGrid(Lista &lista,Ventana &ventana,Mapa &mapa,Tren &tren){
                 }
                 if(bloque.bandido!=NULL){
                     cout<<"COLISSION BANDIDO"<<endl;
-                    colisionBandido(lista,tren,bloque);
+                    setActivo(*getBandido(bloque),false);
+                    colisionBandido(lista,tren,bloque,ventana);
                 }
             }
         }

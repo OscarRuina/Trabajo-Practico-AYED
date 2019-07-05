@@ -15,6 +15,7 @@ typedef struct{
   int c;
   int intervaloBandido;
   int vidaBandido;
+  int cantidadRobo;
   bool activo;
   int tipo;
   int cicloBandido;
@@ -81,6 +82,10 @@ bandido: instancia sobre la cual actua la primitiva
 int getColumna(Bandido &bandido);
 
 
+int getCantidadRobo(Bandido &bandido);
+void setCantidadRobo(Bandido &bandido,int cant);
 int getCicloBandido(Bandido &bandido);
 void setCicloBandido(Bandido &bandido,int ciclo);
+bool getActivo(Bandido &bandido);
+void setActivo(Bandido &bandido,bool activo);
 #endif // Bandido_h

@@ -1,5 +1,5 @@
 #include "Colisiones.h"
-
+#include "ManejoVentana.h"
 void evaluarColiciones(Lista &lista,Ventana &ventana,Mapa &mapa,Tren &tren){
     evaluarLimites(ventana,mapa,tren);
     evaluarGrid(lista,ventana,mapa,tren);
@@ -86,13 +86,49 @@ void colisionMina(Lista &lista,Tren &tren,Bloque &bloque){
     else{
         resetearCajasMina(*mina);
     }
-
 }
 
-void colisionBandido(Lista &lista,Tren &tren,Bloque &bloque ){
 
 
-
-
+void colisionBandido(Lista &lista,Tren &tren,Bloque &bloque,Ventana &ventana){
+    TiposMinerales tipo = traerTipo(getBandido(bloque)->tipo);
+    robarTrenes(lista,bloque,tipo,getCantidadRobo(*getBandido(bloque)),ventana);
 }
 
+
+void robarTrenes(Lista &lista,Bloque &bloque,TiposMinerales tipo, int cantidad,Ventana &ventana){
+    PtrNodoLista cursor;
+    bool terminado = false;
+    cursor = siguiente(lista,primero(lista));
+
+    while((cursor!=finLista())&&(!terminado)){
+        Tren *tren = (Tren*)cursor->ptrDato;
+
+        //se fija que el vagon sea del mismo tipo que el ladron
+        if(CompararMinerales(getTipoMineral(*tren),tipo)){
+            if(getKilosOcupados(*tren)>=cantidad){
+                //seteo la nueva cantidad de kilos ocupados
+                setKilosOcupados(*tren,(getKilosOcupados(*tren)-cantidad));
+                terminado = true;
+            }
+            if(getKilosOcupados(*tren)<cantidad){
+                //calculo la diferencia para restar en el siguiente vagon
+                cantidad = cantidad-getKilosOcupados(*tren);
+                setKilosOcupados(*tren,0);
+            }
+        }
+    cursor=siguiente(lista,cursor);
+    }
+    //si no pudo robar el total realiza lo siguiente
+    if(!terminado){
+        //si hay 1 solo tren , se termina la partida
+        if(longitud(lista)==1){
+            setRun(ventana,false);
+        }
+        else{
+            //si hay mas de 1 vagon , elimina el ultimo
+            eliminarNodoUltimo(lista);
+
+        }
+    }
+}

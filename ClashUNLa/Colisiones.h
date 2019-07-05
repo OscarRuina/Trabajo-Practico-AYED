@@ -45,6 +45,6 @@ mapa,ventana,tren:instancias sobre la que actua la primitiva
 */
 void evaluarLimites(Ventana &ventana,Mapa &mapa,Tren &tren);
 
-void colisionBandido(Lista &lista,Tren &tren,Bloque &bloque );
-
+void colisionBandido(Lista &lista,Tren &tren,Bloque &bloque ,Ventana &ventana);
+void robarTrenes(Lista &lista,Bloque &bloque,TiposMinerales tipo,int cantidad,Ventana &ventana);
 #endif // COLISIONES_H

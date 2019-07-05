@@ -149,7 +149,7 @@ int main(int argc,char *args[])
                     //mostrarMineralesLista(listaMinas);
                 }
                 if(ciclosRender==primerRender){
-                    //mostrarKilosLista(listaTrenes);
+                    mostrarKilosLista(listaTrenes);
                     evaluarGrid(listaTrenes,ventana,mapa,*tren);
                     setListaEstadoAnterior(listaTrenes);
                     setFCListaTrenes(listaTrenes);
@@ -157,6 +157,7 @@ int main(int argc,char *args[])
                     setListaDireccionTrenes(listaTrenes);//cambia la direccion de los vagones dependiendo la direccion del que esta adelante
                 }
                 //tomo el tiempo del primer frame
+
 
                 evaluarLimites(ventana,mapa,*tren);
                 renderElementos(mapa,estacion,listaMinas,listaMonedas,listaBandidos,listaTrenes,ventana.p_render,Turno,TurnoBandido);

@@ -17,6 +17,7 @@ void crearBandido(Bandido &bandido,SDL_Renderer *renderer){
     bandido.vidaBandido = generarNumeroRandom(25,35);
     bandido.tipo = generarNumeroRandom(1,5);
     bandido.activo = true;
+    bandido.cantidadRobo = generarNumeroRandom(5,10);
     bandido.imagen = IMG_LoadTexture(renderer,"img/villano.png");
 
 
@@ -75,3 +76,16 @@ int getVidaBandido(Bandido &bandido){
     return bandido.vidaBandido;
 }
 
+int getCantidadRobo(Bandido &bandido){
+    return bandido.cantidadRobo;
+}
+void setCantidadRobo(Bandido &bandido,int cant){
+    bandido.cantidadRobo = cant;
+}
+
+bool getActivo(Bandido &bandido){
+    return bandido.activo;
+}
+void setActivo(Bandido &bandido,bool activo){
+    bandido.activo=activo;
+}
