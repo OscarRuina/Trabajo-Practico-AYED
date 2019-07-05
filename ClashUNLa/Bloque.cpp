@@ -13,8 +13,8 @@ Bloque crearBloque(int id,int fil,int col){
     bloque.estacion=NULL;
     bloque.mina=NULL;
     bloque.moneda=NULL;
+    bloque.bandido=NULL;
     bloque.ocupado = false;
-  //  bloque.villano=NULL;
   return bloque;
 }
 
@@ -53,3 +53,17 @@ void liberarBloque(Bloque &bloque){
     bloque.ocupado = false;
 }
 
+void liberarBloqueBandido(Bloque &bloque){
+    bloque.bandido=NULL;
+    if((bloque.estacion==NULL)&&(bloque.mina==NULL)&&(bloque.moneda==NULL)){
+        bloque.ocupado = false;
+    }
+}
+
+Bandido* getBandido(Bloque &bloque){
+    return bloque.bandido;
+}
+void setBandido(Bloque &bloque,Bandido *bandido){
+    bloque.bandido = bandido;
+    bloque.ocupado=true;
+}

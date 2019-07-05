@@ -19,6 +19,7 @@ typedef struct{
     SDL_Window *p_ventana;
     SDL_Renderer *p_render;
     bool run;
+    int ciclo;
     int turno;
 }Ventana;
 /*---------------------------------*/
@@ -108,4 +109,10 @@ ventana:instancia sobre la cual se invoca la primitiva
 */
 void destruirVentana(Ventana &ventana);
 /*----------------------------------*/
+
+
+int getCiclo(Ventana &ventana);
+
+void setCiclo(Ventana &ventana,int ciclo);
+
 #endif // ManejoVentana_h

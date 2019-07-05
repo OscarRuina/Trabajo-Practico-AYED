@@ -16,8 +16,10 @@ typedef struct{
   int intervaloBandido;
   int vidaBandido;
   bool activo;
+  int tipo;
+  int cicloBandido;
   SDL_Texture *imagen;
-  SDL_Rect rectImagen;
+  SDL_Rect rectImg;
 }Bandido;
 /*-------------------------------*/
 /*
@@ -32,7 +34,7 @@ PRE: bandido creado con crear
 POST: bandido dibujado en la pantalla
 bandido: instancia sobre la cual actua la primitiva
 */
-void dibujarBandido(Bandido &bandido,SDL_Renderer *renderer, bool turnoBandido);
+void dibujarBandido(Bandido &bandido,SDL_Renderer *renderer,bool turno);
 /*-------------------------------*/
 /*
 PRE: bandido creado con crear
@@ -79,9 +81,6 @@ bandido: instancia sobre la cual actua la primitiva
 int getColumna(Bandido &bandido);
 
 
-
-void crearBandido(Bandido &bandido,SDL_Renderer *renderer,int posX, int posY, int vida);
-
-int generarNumeroRandomB(int minimo,int maximo);
-
+int getCicloBandido(Bandido &bandido);
+void setCicloBandido(Bandido &bandido,int ciclo);
 #endif // Bandido_h

@@ -40,4 +40,8 @@ void updateListaMinas(Lista &lista);
 
 int verificarCantidadDeMinerales(Lista &lista,TiposMinerales mineral);
 bool verificarComanda(Lista &lista,Comanda &comanda);
+
+void verificarEstadoListaBandidos(Lista &lista,Mapa &mapa);
+void renderListaBandido(Lista &lista,SDL_Renderer* renderer,bool turno);
+void generarListaBandidos(Ventana &ventana,Mapa &mapa,Lista &lista);
 #endif // FUNCIONESLISTA_H

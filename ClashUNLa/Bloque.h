@@ -3,6 +3,7 @@
 #include "Moneda.h"
 #include "Estacion.h"
 #include "Mina.h"
+#include "Bandido.h"
 /*Definicion del tipo de datos para menejo del bandido*/
 /*
 Atributos:
@@ -21,7 +22,7 @@ struct Bloque
     int col;
     bool ocupado;
     Moneda *moneda;
-    //Bandido *villano;
+    Bandido *bandido;
     Estacion *estacion;
     Mina *mina;
 
@@ -102,5 +103,9 @@ bloque: instancia sobre la actua la primitiva
 */
 void liberarBloque(Bloque &bloque);
 /*--------------------------------*/
-//Bandido* getBandido();
+
+
+Bandido* getBandido(Bloque &bloque);
+void setBandido(Bloque &bloque,Bandido *bandido);
+void liberarBloqueBandido(Bloque &bloque);
 #endif // BLOQUES_H

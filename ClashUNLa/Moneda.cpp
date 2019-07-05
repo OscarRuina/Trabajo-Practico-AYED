@@ -2,13 +2,16 @@
 #include <iostream>
 #include <time.h>
 #include "FuncionesLista.h"
+#include <iostream>
+#include <fstream>
+
 using namespace std;
 
 void crearMoneda(Moneda &moneda,SDL_Renderer* renderer){
 
     moneda.fil = generarNumeroRandom(0,14);
     moneda.col = generarNumeroRandom(0,19);
-    moneda.vidaUtil = generarNumeroRandom(15,25);
+    moneda.vidaUtil = generarNumeroRandom(25,35);
     moneda.activa = true;
     moneda.textura = IMG_LoadTexture(renderer,"img/moneda.png");
 
@@ -44,4 +47,12 @@ int generarNumeroRandom(int minimo,int maximo){
 
 void destruirMoneda(Moneda &moneda){
     SDL_DestroyTexture(moneda.textura);
+}
+
+int setIntervaloMoneda(){
+    ifstream fin("IntervaloMoneda.txt");
+    int intervalo;
+    fin>>intervalo;
+    return intervalo;
+
 }

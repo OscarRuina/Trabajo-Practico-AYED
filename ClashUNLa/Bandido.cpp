@@ -9,45 +9,35 @@
 
 using namespace std;
 /*implementacion de primitivas*/
+
 void crearBandido(Bandido &bandido,SDL_Renderer *renderer){
-   // cargarVariablesBandido(bandido);
 
-        bandido.c = 10;
-        bandido.f= 10;
-        bandido.intervaloBandido = 5;
-        bandido.vidaBandido = 300;
-        bandido.activo = true;
-        bandido.imagen = IMG_LoadTexture(renderer,"img/villano.png");
-}
-void crearBandido(Bandido &bandido,SDL_Renderer *renderer,int posX, int posY, int vida){
-
-        bandido.c = posY;
-        bandido.f= posX;
-        bandido.intervaloBandido = 5;
-        bandido.vidaBandido = vida;
-        bandido.activo = true;
-        bandido.imagen = IMG_LoadTexture(renderer,"img/villano.png");
+    bandido.c = generarNumeroRandom(0,19);
+    bandido.f= generarNumeroRandom(0,14);
+    bandido.vidaBandido = generarNumeroRandom(25,35);
+    bandido.tipo = generarNumeroRandom(1,5);
+    bandido.activo = true;
+    bandido.imagen = IMG_LoadTexture(renderer,"img/villano.png");
 
 
 }
-void cargarVariablesBandido(Bandido &bandido){}
-
-void dibujarBandido(Bandido &bandido,SDL_Renderer *renderer,bool turnoBandido){
-    bandido.rectImagen.x = bandido.c*40;
-    bandido.rectImagen.y = bandido.f*40;
-    bandido.rectImagen.h = 40;
-    bandido.rectImagen.w = 40;
-    SDL_RenderCopy(renderer,bandido.imagen,NULL,&(bandido.rectImagen));
 
 
-    /*if(turnoBandido){
+void dibujarBandido(Bandido &bandido,SDL_Renderer *renderer,bool turno){
+
+    if(bandido.vidaBandido>0){
+        bandido.rectImg.x = bandido.c*40;
+        bandido.rectImg.y = bandido.f*40;
+        bandido.rectImg.h = 40;
+        bandido.rectImg.w = 40;
+        SDL_RenderCopy(renderer,bandido.imagen,NULL,&(bandido.rectImg));
+    }
+    if(turno == 1){
         bandido.vidaBandido--;
     }
-    if(bandido.vidaBandido<0){
-        bandido.activo = false;
-        destruirBandido(bandido);
-    }*/
-
+    if(bandido.vidaBandido<=0){
+        bandido.activo=0;
+    }
 }
 
 
@@ -85,9 +75,3 @@ int getVidaBandido(Bandido &bandido){
     return bandido.vidaBandido;
 }
 
-int generarNumeroRandomB(int minimo,int maximo){
-    srand((unsigned int)time(NULL));
-    int rango = (maximo-minimo)+1;
-
-    return (minimo+rand()%rango);
-}

@@ -8,7 +8,8 @@ void crearVentana(Ventana &ventana){
     ventana.p_ventana = 0;
     ventana.p_render = 0;
     ventana.run = true;
-    int turno = 0;
+    ventana.turno = 0;
+    ventana.ciclo = 0;
 }
 
 void setTurno(Ventana &ventana,int turno){
@@ -126,3 +127,12 @@ void destruirVentana(Ventana &ventana){
     SDL_DestroyWindow(ventana.p_ventana);//destruyo ventana
     SDL_Quit();
 }
+
+int getCiclo(Ventana &ventana){
+    return ventana.ciclo;
+}
+
+void setCiclo(Ventana &ventana,int ciclo){
+    ventana.ciclo = ciclo;
+}
+

@@ -12,6 +12,8 @@
 #include "Lista.h"
 #include "FuncionesLista.h"
 #include "Comanda.h"
+#include "Bandido.h"
+#include "Colisiones.h"
 
 ResultadoComparacion compararListaTrenes(PtrDato ptrDato1,PtrDato ptrDato2){
     int dato1 = ((Tren*) ptrDato1)->rectImag.x;
@@ -25,7 +27,6 @@ ResultadoComparacion compararListaTrenes(PtrDato ptrDato1,PtrDato ptrDato2){
         return IGUAL;
     }
 }
-
 
 ResultadoComparacion compararListaMinas(PtrDato ptrDato1,PtrDato ptrDato2){
     TiposMinerales dato1 = ((Mina*)ptrDato1)->tipo;
@@ -48,6 +49,40 @@ ResultadoComparacion compararListaMonedas(PtrDato ptrDato1,PtrDato ptrDato2){
     }
 }
 
+ResultadoComparacion compararListaBandidos(PtrDato ptrDato1,PtrDato ptrDato2){
+    int dato1 = ((Bandido*)ptrDato1)->rectImg.x+((Bandido*)ptrDato1)->rectImg.y;
+    int dato2 = ((Bandido*)ptrDato2)->rectImg.x+((Bandido*)ptrDato2)->rectImg.y;
+    if (dato1 < dato2) {
+        return MENOR;
+    }else if (dato1 > dato2) {
+        return MAYOR;
+    }else{
+        return IGUAL;
+    }
+}
+
+void eliminarElementos(Lista &listaMinas,Lista &listaMonedas,Lista &listaBandidos,Lista &listaTrenes,Estacion *estacion,Tren *tren,Ventana &ventana){
+    eliminarLista(listaMinas);
+    eliminarLista(listaMonedas);
+    eliminarLista(listaBandidos);
+    eliminarLista(listaTrenes);
+    destruirEstacion(*estacion);
+    destruirTren(*tren);
+    destruirVentana(ventana);
+}
+
+void renderElementos(Mapa &mapa,Estacion *estacion,Lista &listaMinas,Lista &listaMonedas,Lista &listaBandidos,Lista &listaTrenes,SDL_Renderer* renderer,bool turnoMoneda,bool  turnoBandido){
+
+    dibujarMapa(mapa,renderer);
+    dibujarEstacion(*estacion,renderer);
+    renderListaMinas(listaMinas,renderer);
+    renderListaMonedas(listaMonedas,renderer,turnoMoneda);
+    renderListaBandido(listaBandidos,renderer,turnoBandido);
+    renderListaTrenes(listaTrenes,renderer);
+
+}
+
+
 using namespace std;
 
 int main(int argc,char *args[])
@@ -67,7 +102,6 @@ int main(int argc,char *args[])
     //variables tren y lista de trenes
     Tren* tren = new Tren;
     crearTren(*tren,"c1","aba",0,0,0);
-
     Lista listaTrenes;
     crearLista(listaTrenes,compararListaTrenes);
     adicionarPrincipio(listaTrenes,tren);
@@ -84,31 +118,38 @@ int main(int argc,char *args[])
     crearLista(listaMonedas,compararListaMonedas);
     //variable bandido
     Lista listaBandidos;
-   // crearLista(listaBandidos)
+    crearLista(listaBandidos,compararListaBandidos);
     //variable comanda
     Comanda *comanda;
     crearComanda(*comanda);
-    mostrarComanda(*comanda);
+    /////////////////////////////////////////////////////
     bool doOnce = true;
-    bool turnoMoneda = true;
+    bool Turno = true;
+    bool TurnoBandido = true;
     int generarMonedas = 0;
     int ciclosRender = 0;
-
-
+    int cicloBandido = 0;
+    int intervaloMoneda = 0;
+    int intervaloBandido = 0;
+    int primerRender = 0;
+    intervaloMoneda = setIntervaloMoneda();
+    intervaloBandido = setIntervaloMoneda()*2.5;
     while(getRun(ventana)){
+    int cicloBandido = getCiclo(ventana);
 
+                //tomo el tiempo del primer frame
+                frameStart = SDL_GetTicks();
 
                 renderClear(ventana);
                 dibujarMapa(mapa,ventana.p_render);
-
 
                 while(doOnce){
                     renderPresent(ventana);
                     doOnce = false;
                     //mostrarMineralesLista(listaMinas);
                 }
-                if(ciclosRender==0){
-                    mostrarKilosLista(listaTrenes);
+                if(ciclosRender==primerRender){
+                    //mostrarKilosLista(listaTrenes);
                     evaluarGrid(listaTrenes,ventana,mapa,*tren);
                     setListaEstadoAnterior(listaTrenes);
                     setFCListaTrenes(listaTrenes);
@@ -116,50 +157,54 @@ int main(int argc,char *args[])
                     setListaDireccionTrenes(listaTrenes);//cambia la direccion de los vagones dependiendo la direccion del que esta adelante
                 }
                 //tomo el tiempo del primer frame
-                frameStart = SDL_GetTicks();
 
                 evaluarLimites(ventana,mapa,*tren);
-                dibujarMapa(mapa,ventana.p_render);
-                dibujarEstacion(*estacion,ventana.p_render);
-                renderListaMinas(listaMinas,ventana.p_render);
-                renderListaMonedas(listaMonedas,ventana.p_render,turnoMoneda);
-                renderListaTrenes(listaTrenes,ventana.p_render);
+                renderElementos(mapa,estacion,listaMinas,listaMonedas,listaBandidos,listaTrenes,ventana.p_render,Turno,TurnoBandido);
 
 
                 renderPresent(ventana);
                 frameTime = SDL_GetTicks() - frameStart;
-                //si lo que tarda es mas rapido de lo necesario para realizar la cantidad de FPS que asigne , realizara un delay
-                if(frameDelay> frameTime){
-                    SDL_Delay(frameDelay - frameTime);
-                }
+
+
                 ciclosRender++;
                 generarMonedas++;
-                turnoMoneda=false;
+                Turno=false;
+                TurnoBandido=false;
+                cicloBandido++;
+                setCiclo(ventana,cicloBandido);
+                if(cicloBandido==40*intervaloBandido){
+                    generarListaBandidos(ventana,mapa,listaBandidos);
+                    setCiclo(ventana,0);
+                }
                 if(ciclosRender==anchoCasillero){
+                    verificarEstadoListaBandidos(listaBandidos,mapa);
                     verificarEstadoListaMonedas(listaMonedas,mapa);
                     verificarColisionVagones(ventana,listaTrenes,*tren);
                     setTurno(ventana,getTurno(ventana)+1);
-                    turnoMoneda=true;
                     updateListaMinas(listaMinas);
                     ciclosRender = 0;
+                    Turno=true;
+                    TurnoBandido=true;
                     if(verificarComanda(listaTrenes,*comanda)){
                             cout<<"GANO!!"<<endl;
                             setRun(ventana,false);
                        }
                 }
-                if(generarMonedas==120){
+
+
+                if(generarMonedas==40*intervaloMoneda){
                     generarListaMonedas(ventana,listaMonedas,mapa);
                     generarMonedas=0;
+
                 }
 
+                    //si lo que tarda es mas rapido de lo necesario para realizar la cantidad de FPS que asigne , realizara un delay
+        if(frameDelay> frameTime){
+            SDL_Delay(frameDelay - frameTime);
+        }
     }
-    eliminarLista(listaMinas);
-    eliminarLista(listaTrenes);
-    eliminarLista(listaMonedas);
-    destruirEstacion(*estacion);
-    destruirTren(*tren);
-    destruirVentana(ventana);
+
+    eliminarElementos(listaTrenes,listaBandidos,listaMinas,listaMonedas,estacion,tren,ventana);
     return 0;
 }
-
 

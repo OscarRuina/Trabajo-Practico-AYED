@@ -157,6 +157,34 @@ void verificarEstadoListaMonedas(Lista &lista,Mapa &mapa){
     reordenar(lista);
 }
 
+
+//verifica que la vida del bandido no haya expirado,
+//si expiro , lo remueve de la lista y libera los bloques.
+void verificarEstadoListaBandidos(Lista &lista,Mapa &mapa){
+    PtrNodoLista cursor;
+    cursor = primero(lista);
+    while(cursor!=finLista()){
+        Bandido *bandido;
+        bandido = (Bandido*) cursor->ptrDato;
+        if(bandido->activo==0){
+            int minFil = (getFila(*bandido)-1);
+            int minCol = (getColumna(*bandido)-1);
+            int maxFil = (getFila(*bandido)+1);
+            int maxCol = (getColumna(*bandido)+1);
+            for(int i =minFil; i<=maxFil;i++){
+                for(int j = minCol ;j<=maxCol;j++){
+                liberarBloqueBandido(mapa.bloques[i][j]);
+                }
+            }
+
+            destruirBandido(*bandido);
+            eliminarNodo(lista,cursor);
+        }
+        cursor=siguiente(lista,cursor);
+    }
+
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void generarListaMinas(Ventana &ventana,Mapa &mapa,Lista &lista){
     ifstream fin("Minas.txt");
@@ -188,7 +216,7 @@ void mostrarMineralesLista(Lista &lista){
 
 }
 
-
+//dibuja la lista de las minas
 void renderListaMinas(Lista &lista,SDL_Renderer *renderer){
     PtrNodoLista cursor;
     cursor = primero(lista);
@@ -199,6 +227,8 @@ void renderListaMinas(Lista &lista,SDL_Renderer *renderer){
     }
 }
 
+
+//updatea la vida las cajasd e las minas
 void updateListaMinas(Lista &lista){
     PtrNodoLista cursor;
     cursor = primero(lista);
@@ -236,8 +266,6 @@ bool verificarComanda(Lista &lista,Comanda &comanda){
     cantPlata=verificarCantidadDeMinerales(lista,plata);
     cantOro=verificarCantidadDeMinerales(lista,oro);
     cantPlatino=verificarCantidadDeMinerales(lista,platino);
-
-    cout<< cantCarbon<<"-"<<cantBronce <<"-"<<cantPlata <<"-"<<cantOro <<"-"<< cantPlatino<<endl;
     if(cantCarbon<getCantidadCarbon(comanda)){
         estado = false;
     }
@@ -254,5 +282,49 @@ bool verificarComanda(Lista &lista,Comanda &comanda){
        estado = false;
        }
     return estado ;
+}
+////////////////////////////////////////////////////////////////////////////////////////
+//verifica que no exista mas de 2 bandidos , y si no existen agrega uno nuevo
+void generarListaBandidos(Ventana &ventana, Mapa &mapa,Lista &lista){
+    if(longitud(lista)<2){
+        Bandido *bandido = new Bandido;
+        crearBandido(*bandido,ventana.p_render);
+        int minFil =0;int minCol =0;int maxFil = 0;int maxCol =0;
+        minFil = getFila(*bandido)-1;
+        maxFil = getFila(*bandido)+1;
+        minCol = getColumna(*bandido)-1;
+        maxCol = getColumna(*bandido)+1;
+        for(int i = minFil;i<=maxFil;i++){
+            for(int j = minCol;j<=maxCol;j++){
+                if(((i>=0)&&(i<=14))&&((j>=0)&&(j<=19))){
+                    setBandido(mapa.bloques[i][j],bandido);
+                }
+            }
+
+        }
+
+
+        if(listaVacia(lista)){
+            adicionarPrincipio(lista,bandido);
+            }
+        else{
+            adicionarFinal(lista,bandido);
+            }
+        }
+    }
+
+
+void renderListaBandido(Lista &lista,SDL_Renderer* renderer,bool turno){
+    PtrNodoLista cursor;
+    cursor = primero(lista);
+    while(cursor!=finLista()){
+        Bandido *bandido;
+        bandido = (Bandido*) cursor->ptrDato;
+        dibujarBandido(*bandido,renderer,turno);
+        cursor= siguiente(lista,cursor);
+    }
 
 }
+
+
+

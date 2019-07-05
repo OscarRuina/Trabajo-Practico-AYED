@@ -60,7 +60,6 @@ void updateMina(Mina &mina){
     ciclo++;
     if(ciclo==getIntervalo(mina)){
         setCajasDisponibles(mina,getCajasDisponibles(mina)+1);
-        cout<<getCajasDisponibles(mina)<<endl;
         setCicloIntervalo(mina,0);
     }
     else{
