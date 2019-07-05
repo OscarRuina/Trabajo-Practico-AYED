@@ -1,0 +1,10 @@
+S;5
+P;50
+A;4
+posXE;100
+posYE;100
+IM;4
+VM;10
+IB;5
+VB;4
+IP;5

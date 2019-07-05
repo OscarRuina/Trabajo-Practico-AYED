@@ -326,5 +326,35 @@ void renderListaBandido(Lista &lista,SDL_Renderer* renderer,bool turno){
 
 }
 
+void pagarBandido(Ventana &ventana,Lista &lista,int cantidad)
+{
+    bool terminado = false;
+    bool destruir = false;
+    if(longitud(lista)<2)
+    {
+        cout<<"NO PUDISTE PAGAR"<<endl;
+    }
+    else{
+    PtrNodoLista cursor;
+    cursor = siguiente(lista,primero(lista));
+    while(cursor!=finLista()&&(!terminado)){
+        Tren *tren;
+        tren = (Tren*) cursor->ptrDato;
 
+            if(getKilosOcupados(*tren)<cantidad){
+                destruir = true;
+            }
+            if(getKilosOcupados(*tren)>=cantidad)
+            {
+                setKilosOcupados(*tren,getKilosOcupados(*tren)-cantidad);
+                terminado = true;
+                destruir = false;
+            }
 
+          cursor = siguiente(lista,cursor);
+         }
+    if(destruir){
+        eliminarNodoUltimo(lista);
+    }
+    }
+}

@@ -44,4 +44,7 @@ bool verificarComanda(Lista &lista,Comanda &comanda);
 void verificarEstadoListaBandidos(Lista &lista,Mapa &mapa);
 void renderListaBandido(Lista &lista,SDL_Renderer* renderer,bool turno);
 void generarListaBandidos(Ventana &ventana,Mapa &mapa,Lista &lista);
+
+
+void pagarBandido(Ventana &ventana,Lista &lista,int cantidad);
 #endif // FUNCIONESLISTA_H

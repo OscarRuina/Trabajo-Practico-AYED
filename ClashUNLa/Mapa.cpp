@@ -4,7 +4,7 @@
 #include <SDL_image.h>
 #include "Bloque.h"
 #include "Colisiones.h"
-
+#include "FuncionesLista.h"
 
 using namespace std;
 
@@ -62,8 +62,16 @@ void evaluarGrid(Lista &lista,Ventana &ventana,Mapa &mapa,Tren &tren){
                 }
                 if(bloque.bandido!=NULL){
                     cout<<"COLISSION BANDIDO"<<endl;
-                    setActivo(*getBandido(bloque),false);
-                    colisionBandido(lista,tren,bloque,ventana);
+                    bool pagar = pagarBandidoTecla(ventana);
+                    if(pagar==1){
+                        cout<<"YA TE PAGUE BANDIDO"<<endl;
+                            pagarBandido(ventana,lista,getCantidadRobo(*getBandido(bloque)));
+                            setActivo(*getBandido(bloque),false);
+                        }
+                    else  {
+                        setActivo(*getBandido(bloque),false);
+                        colisionBandido(lista,tren,bloque,ventana);
+                    }
                 }
             }
         }

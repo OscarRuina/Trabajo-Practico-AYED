@@ -17,7 +17,7 @@ void crearBandido(Bandido &bandido,SDL_Renderer *renderer){
     bandido.vidaBandido = generarNumeroRandom(25,35);
     bandido.tipo = generarNumeroRandom(1,5);
     bandido.activo = true;
-    bandido.cantidadRobo = generarNumeroRandom(5,10);
+    bandido.cantidadRobo = generarNumeroRandom(1,3);
     bandido.imagen = IMG_LoadTexture(renderer,"img/villano.png");
 
 

@@ -123,5 +123,6 @@ ventana: instancia sobre la que actua la primitiva
 ciclo: valor a setear
 */
 void setCiclo(Ventana &ventana,int ciclo);
+bool pagarBandidoTecla(Ventana &ventana);
 
 #endif // ManejoVentana_h

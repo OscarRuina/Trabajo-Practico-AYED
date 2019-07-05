@@ -60,6 +60,7 @@ bool InicializarVentana(Ventana &ventana, const char *titulo,int posx,int posy,i
 
 bool ManejarEventos(Ventana &ventana,Tren &tren){
     bool seguir = false;
+    bool pagado = false;
     SDL_Event eventos;
     const unsigned char *keys;
     keys = SDL_GetKeyboardState(NULL);
@@ -101,12 +102,41 @@ bool ManejarEventos(Ventana &ventana,Tren &tren){
                     seguir=true;
                     setRun(ventana,false);
                 }
+
             }
         }
 
 
     }
+    return pagado;
 
+}
+
+bool pagarBandidoTecla(Ventana &ventana){
+    bool pagado = false;
+    SDL_Event eventos;
+    const unsigned char *keys;
+    bool terminado = false;
+
+    while(!terminado){
+
+    keys = SDL_GetKeyboardState(NULL);
+    if(SDL_WaitEvent(&eventos)){
+            switch(eventos.type){
+            case SDL_KEYDOWN:
+                if(keys[SDL_SCANCODE_0])  {
+                    pagado = true;
+                    terminado = true;
+                    cout<<pagado<<endl;
+                }
+                if(keys[SDL_SCANCODE_Z])  {
+                    pagado = false;
+                    terminado = true;
+                }
+            }
+        }
+    }
+    return pagado;
 }
 
 void renderClear(Ventana &ventana){
